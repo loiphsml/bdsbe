@@ -1,0 +1,40 @@
+#h_product {
+  h3.title {
+    font-size: 21px;
+    text-transform: uppercase;
+    color: $main-color;
+    border-bottom: 1px solid #d9dcdd;
+    display: block;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  .one-product {
+    img.img-one-product {
+      height: 210px;
+    }
+    h2.title {
+      a {
+        display: block;
+        color: #212529;
+        text-transform: capitalize;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: bold;
+      }
+    }
+    .info {
+      margin-top: 5px;
+      ul {
+        list-style: none;
+        text-align: center;
+        background-color: $main-color;
+        li {
+          color: white;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+}
