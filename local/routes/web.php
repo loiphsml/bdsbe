@@ -4,6 +4,16 @@
 Route::get('/', function () {
     return view('frontend.home.index');
 });
+
+Route::get('/danh-muc-bds', function () {
+    return view('frontend.categories.index');
+});
+
+Route::get('/danh-muc/can-ho-a', function () {
+    return view('frontend.product.index');
+});
+
+
 Route::post('/tim-kiem','FrontendController@getSearch')->name('search');
 
 

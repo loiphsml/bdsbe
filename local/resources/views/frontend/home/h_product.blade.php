@@ -8,7 +8,7 @@
                 {{ Html::image('images/temps/home/tmp_h_product.jpg','',array('class'=>'img-one-product')) }}
                 <div class="card-body">
                     <h2 class="title">
-                        <a href=""> New Studio For Rent With 01 Bedroom In</a>
+                        <a href="{{URL::to('danh-muc/can-ho-a')}}"> New Studio For Rent With 01 Bedroom In</a>
                     </h2>
                 </div>
                 <div class="info">
