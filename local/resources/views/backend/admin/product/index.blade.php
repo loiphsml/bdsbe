@@ -71,11 +71,11 @@
                 <tr>
                     <th>TT</th>
                     <th></th>
-                    <th>Tên Sản Phẩm</th>
+                    <th>Tên Bất Động Sản</th>
                     <th>Hình</th>
-                    <th>Giá Gốc</th>
-                    <th>Giá Giảm</th>
-                    <th>Loại Sản Phẩm</th>
+                    <th>Giá</th>
+                    <th>Diện Tích</th>
+                    <th>Loại</th>
                     <th>Người Đăng</th>
                     <th>Ngày Đăng</th>
                     <th>Ngày Cập Nhật</th>
@@ -88,7 +88,7 @@
                     <td>{{ $data->name }}</td>
                     <td>{{Html::image($data->image,'',array('class'=>'product-img'))}}</td>
                     <td>{{$data->price}}</td>
-                    <td>{{$data->final_price}}</td>
+                    <td>{{$data->area}}</td>
                     <td>{{ $data->categoryproduct->name }}</td>
                     <td>{{ $data->users->name }}</td>
                     <td>{{ $data->created_at }}</td>

@@ -50,33 +50,27 @@
                     {!! Form::select('category_product',$dd_category_products, null,array('class' => 'form-control')) !!}
                 </div>
                 <div class="form-group">
-                    <strong>Mã Sản Phẩm</strong>
-                    {!! Form::text('code',null, array('placeholder' => 'Mã SP','class' => 'form-control')) !!}
+                    <strong>Vị Trí</strong>
+                    {!! Form::select('location_product',$dd_locations, null,array('class' => 'form-control')) !!}
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <strong>Giá: </strong>
                             {!! Form::text('price',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <strong>% Giảm Giá: </strong>
-                            {!! Form::text('sale',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <strong>Giá Giảm: </strong>
-                            {!! Form::text('final_price',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
+                            <strong>Diện Tích: </strong>
+                            {!! Form::text('area',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-12 p-0">
-            <strong>Mô Tả Sản Phẩm:</strong>
+            <strong>Mô Tả Bất Động Sản:</strong>
             {!! Form::textarea('content',null,array('placeholder' => '','id'=>'content-page','class' => 'form-control','rows'=>'10','style'=>'resize:none')) !!}
         </div>
         <hr>

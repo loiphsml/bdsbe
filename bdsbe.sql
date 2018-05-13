@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2018 at 05:50 AM
+-- Generation Time: May 13, 2018 at 05:52 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.27
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sangohoanghaiminh`
+-- Database: `bdsbe`
 --
 
 -- --------------------------------------------------------
@@ -45,6 +45,14 @@ CREATE TABLE `category_items` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `category_items`
+--
+
+INSERT INTO `category_items` (`id`, `name`, `path`, `description`, `image`, `image_mobile`, `level`, `parent_id`, `type`, `seo_title`, `seo_description`, `seo_keywords`, `order`, `isActive`, `created_at`, `updated_at`) VALUES
+(60, 'Đất Nền Dự Án', 'dat-nen-du-an', '<p>\r\n	Đất Nền Dự Án\r\n</p>', '0', '0', 0, NULL, 1, 'Đất Nền Dự Án', 'Đất Nền Dự Án', 'Đất Nền Dự Án', 1, 1, '2018-05-13 13:22:57', '2018-05-13 13:22:57'),
+(61, 'Căn Hộ Chung Cư', 'can-ho-chung-cu', '<p>\r\n	Đất Nền Dự Án\r\n</p>', 'http://localhost:8080/bdsbe/', 'http://localhost:8080/bdsbe/', 0, NULL, 1, 'Đất Nền Dự Án', 'Đất Nền Dự Án', 'Đất Nền Dự Án', 1, 1, '2018-05-13 13:22:57', '2018-05-13 13:23:18');
+
 -- --------------------------------------------------------
 
 --
@@ -68,7 +76,8 @@ INSERT INTO `category_permissions` (`id`, `name`, `created_at`, `updated_at`) VA
 (3, 'Menu', '2018-03-14 07:31:28', '2018-03-14 07:31:28'),
 (4, 'Page', '2018-03-14 07:31:29', '2018-03-14 07:31:29'),
 (5, 'Post', '2018-03-14 07:31:29', '2018-03-14 07:31:29'),
-(7, 'Product', '2018-03-27 03:05:29', '2018-03-27 03:05:29');
+(7, 'Product', '2018-03-27 03:05:29', '2018-03-27 03:05:29'),
+(8, 'Location', '2018-05-13 14:15:02', '2018-05-13 14:15:02');
 
 -- --------------------------------------------------------
 
@@ -93,6 +102,33 @@ CREATE TABLE `configs` (
 
 INSERT INTO `configs` (`id`, `name`, `content`, `description`, `order`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 'config-contact', '<p>\r\n	<strong><em><span style="background-color:#f1c40f;">Hotline đặt hàng</span>:</em></strong><em>&nbsp;&nbsp;<strong>097.388.9336 - 0914.675.777</strong></em>\r\n</p>\r\n\r\n<p>\r\n	<strong><em>Hotline hỗ trợ tư vấn và phản hồi ý kiến</em></strong><em>:&nbsp;&nbsp;<strong>097.388.9336</strong></em>\r\n</p>\r\n\r\n<p>\r\n	<strong><em>Hân hạnh được phục vụ quý khách hàng.!</em></strong>\r\n</p>\r\n\r\n<p>\r\n	<strong><em>Thông tin liên hệ với chúng tôi:</em></strong>\r\n</p>\r\n\r\n<p>\r\n	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<strong>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ THÉP KHÁNH NAM</strong>\r\n</p>\r\n\r\n<p>\r\n	<strong>TRỤ SỞ CHÍNH:</strong>&nbsp;<em>201 Bình Thành, KP 4, P. Bình Hưng Hòa, Q. Bình Tân, thành phố Hồ Chí Minh</em>\r\n</p>\r\n\r\n<p>\r\n	<strong>Di động:</strong><em>&nbsp;097.388.9336 - 0914.675.777</em>\r\n</p>', NULL, NULL, 1, NULL, '2018-03-30 09:07:51');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `locations`
+--
+
+CREATE TABLE `locations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `level` tinyint(4) NOT NULL DEFAULT '0',
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
+  `order` int(11) NOT NULL DEFAULT '1',
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`id`, `name`, `path`, `level`, `is_active`, `order`, `parent_id`, `created_at`, `updated_at`) VALUES
+(1, 'TP Hồ Chí Minh', 'tp-ho-chi-minh', 0, 1, 1, 0, '2018-05-13 14:48:18', '2018-05-13 14:48:18'),
+(2, 'Quận 1', 'quan-1', 1, 1, 1, 1, '2018-05-13 14:48:31', '2018-05-13 14:48:31'),
+(3, 'Quận 2', 'quan-2', 1, 0, 2, 1, '2018-05-13 14:48:31', '2018-05-13 15:04:13');
 
 -- --------------------------------------------------------
 
@@ -125,6 +161,16 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2018_03_14_140923_create_entrust_setup_tables', 1),
+(4, '2018_05_13_205516_create_locations_table', 2);
 
 -- --------------------------------------------------------
 
@@ -182,7 +228,11 @@ INSERT INTO `permissions` (`id`, `name`, `display_name`, `description`, `categor
 (21, 'product-list', 'Toàn Quyền Sản Phẩm', 'Được Toàn Quyền Sản Phẩm', 7, '2018-03-27 03:06:34', '2018-03-27 03:06:34'),
 (22, 'product-create', 'Thêm Mới Sản Phẩm', 'Được Thêm Mới Sản Phẩm', 7, '2018-03-27 03:06:34', '2018-03-27 03:06:34'),
 (23, 'product-edit', 'Cập Nhật Sản Phẩm', 'Được Cập Nhật Sản Phẩm', 7, '2018-03-27 03:06:34', '2018-03-27 03:06:34'),
-(24, 'product-delete', 'Xóa Sản Phẩm', 'Được Xóa Sản Phẩm', 7, '2018-03-27 03:06:34', '2018-03-27 03:06:34');
+(24, 'product-delete', 'Xóa Sản Phẩm', 'Được Xóa Sản Phẩm', 7, '2018-03-27 03:06:34', '2018-03-27 03:06:34'),
+(25, 'location-list', 'Toàn Quyền Địa Điểm', 'Được Toàn Quyền Địa Điểm', 8, '2018-05-13 14:16:04', '2018-05-13 14:16:04'),
+(26, 'location-create', 'Thêm Mới Địa Điểm', 'Được Thêm Mới Địa Điểm', 8, '2018-05-13 14:16:04', '2018-05-13 14:16:04'),
+(27, 'location-edit', 'Cập Nhật Địa Điểm', 'Được Cập Nhật Địa Điểm', 8, '2018-05-13 14:16:04', '2018-05-13 14:16:04'),
+(28, 'location-delete', 'Xóa Địa Điểm', 'Được Xóa Địa Điểm', 8, '2018-05-13 14:16:04', '2018-05-13 14:16:04');
 
 -- --------------------------------------------------------
 
@@ -223,7 +273,11 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (21, 1),
 (22, 1),
 (23, 1),
-(24, 1);
+(24, 1),
+(25, 1),
+(26, 1),
+(27, 1),
+(28, 1);
 
 -- --------------------------------------------------------
 
@@ -262,13 +316,12 @@ CREATE TABLE `products` (
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci,
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` int(11) DEFAULT '0',
+  `area` int(11) DEFAULT '0',
+  `location_id` int(11) NOT NULL,
   `seo_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `seo_description` text COLLATE utf8mb4_unicode_ci,
   `seo_keywords` text COLLATE utf8mb4_unicode_ci,
-  `price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '0',
-  `sale` int(11) NOT NULL DEFAULT '0',
-  `final_price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '0',
   `order` int(11) NOT NULL DEFAULT '1',
   `user_id` int(10) UNSIGNED NOT NULL,
   `category_product_id` int(10) UNSIGNED NOT NULL,
@@ -364,6 +417,12 @@ ALTER TABLE `configs`
   ADD KEY `configs_user_id_foreign` (`user_id`);
 
 --
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `menus`
 --
 ALTER TABLE `menus`
@@ -440,17 +499,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category_items`
 --
 ALTER TABLE `category_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `category_permissions`
 --
 ALTER TABLE `category_permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `configs`
 --
 ALTER TABLE `configs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `menus`
 --
@@ -460,12 +524,12 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `posts`
 --
