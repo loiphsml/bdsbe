@@ -27,6 +27,8 @@
         </li>
         <li><a href="{{ route('product.index') }}"><i class="fa fa-link"></i> <span>Sản Phẩm</span></a>
         </li>
+        <li><a href="{{ route('location.index') }}"><i class="fa fa-link"></i> <span>Địa Điểm</span></a>
+        </li>
         <li><a href="{{ route('config.index') }}"><i class="fa fa-link"></i> <span>Cấu Hình</span></a>
         </li>
 

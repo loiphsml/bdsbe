@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\CategoryItem;
+use App\Location;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,14 +38,26 @@ class ProductController extends Controller
                 $data->name = ' --------- ' . $data->name;
             } else if ($data->level == CATEGORY_PRODUCT_CAP_3) {
                 $data->name = ' ------------------ ' . $data->name;
-            } else if ($data->level == CATEGORY_PRODUCT_CAP_3) {
+            }
+        }
+        $newArray1 = [];
+        self::showCategoryDropDown($dd_category_products, 0, $newArray1);
+        $dd_category_products = array_pluck($newArray1, 'name', 'id');
+
+        $dd_locations = Location::orderBy('order')->get();
+        foreach ($dd_locations as $key => $data) {
+            if ($data->level == LOCATION_CAP_1) {
+                $data->name = ' ---- ' . $data->name;
+            } else if ($data->level == LOCATION_CAP_2) {
+                $data->name = ' --------- ' . $data->name;
+            } else if ($data->level == LOCATION_CAP_3) {
                 $data->name = ' ------------------ ' . $data->name;
             }
         }
-        $newArray = [];
-        self::showCategoryDropDown($dd_category_products, 0, $newArray);
-        $dd_category_products = array_pluck($newArray, 'name', 'id');
-        return view('backend.admin.product.create', compact('roles', 'dd_category_products'));
+        $newArray2 = [];
+        self::showCategoryDropDown($dd_locations, 0, $newArray2);
+        $dd_locations = array_pluck($newArray2, 'name', 'id');
+        return view('backend.admin.product.create', compact('roles', 'dd_category_products', 'dd_locations'));
     }
 
     /**
@@ -61,39 +74,24 @@ class ProductController extends Controller
         $content = $request->input('content');
         $order = $request->input('order');
         $isActive = $request->input('is_active');
-        $categoryPostID = $request->input('category_product');
+        $categoryProductID = $request->input('category_product');
+        $locationID = $request->input('location_product');
         $seoTitle = $request->input('seo_title');
         $seoDescription = $request->input('seo_description');
         $seoKeywords = $request->input('seo_keywords');
-        $code = $request->input('code');
         $price = $request->input('price');
-        $sale = $request->input('sale');
-        $finalSale = $request->input('final_price');
+        $area = $request->input('area');
         if (!IsNullOrEmptyString($price)) {
-            if (!IsNullOrEmptyString($sale)) {
-                $product->price = $price;
-                $product->sale = $sale;
-                $product->final_price = $finalSale;
-            } else {
-                $product->price = $price;
-                $product->sale = 0;
-                $product->final_price = 0;
-            }
-        } else {
-            $product->price = 0;
-            $product->sale = 0;
-            $product->final_price = 0;
+            $product->price = $price;
         }
-        if (!IsNullOrEmptyString($code)) {
-            $product->code = $code;
+        if (!IsNullOrEmptyString($area)) {
+            $product->area = $area;
         }
         if (!IsNullOrEmptyString($order)) {
             $product->order = $order;
         }
         if (!IsNullOrEmptyString($isActive)) {
             $product->isActive = 1;
-        } else {
-            $product->isActive = 0;
         }
         if (!IsNullOrEmptyString($description)) {
             $product->description = $description;
@@ -109,13 +107,12 @@ class ProductController extends Controller
         }
         $image = $request->input('image');
         $image = substr($image, strpos($image, 'images'), strlen($image) - 1);
-
         $product->name = $name;
         $product->path = chuyen_chuoi_thanh_path($name);
         $product->image = $image;
-
         $product->content = $content;
-        $product->category_product_id = $categoryPostID;
+        $product->category_product_id = $categoryProductID;
+        $product->location_id = $locationID;
         $product->user_id = Auth::user()->id;
         $product->save();
         return redirect()->route('product.index')->with('success', 'Tạo Mới Thành Công Sản Phẩm');
@@ -151,13 +148,31 @@ class ProductController extends Controller
                 $data->name = ' ------------------ ' . $data->name;
             }
         }
-        $newArray = [];
-        self::showCategoryDropDown($dd_category_products, 0, $newArray);
-        $dd_category_products = array_pluck($newArray, 'name', 'id');
+        $newArray1 = [];
+        self::showCategoryDropDown($dd_category_products, 0, $newArray1);
+        $dd_category_products = array_pluck($newArray1, 'name', 'id');
         $dd_category_products = array_map(function ($index, $value) {
             return ['index' => $index, 'value' => $value];
         }, array_keys($dd_category_products), $dd_category_products);
-        return view('backend.admin.product.edit', compact('product', 'dd_category_products'));
+
+        $dd_locations = Location::orderBy('order')->get();
+        foreach ($dd_locations as $key => $data) {
+            if ($data->level == LOCATION_CAP_1) {
+                $data->name = ' ---- ' . $data->name;
+            } else if ($data->level == LOCATION_CAP_1_CAP_2) {
+                $data->name = ' --------- ' . $data->name;
+            } else if ($data->level == LOCATION_CAP_1_CAP_3) {
+                $data->name = ' ------------------ ' . $data->name;
+            }
+        }
+        $newArray2 = [];
+        self::showCategoryDropDown($dd_locations, 0, $newArray2);
+        $dd_locations = array_pluck($newArray2, 'name', 'id');
+        $dd_locations = array_map(function ($index, $value) {
+            return ['index' => $index, 'value' => $value];
+        }, array_keys($dd_locations), $dd_locations);
+
+        return view('backend.admin.product.edit', compact('product', 'dd_category_products','dd_locations'));
     }
 
     /**
@@ -176,54 +191,24 @@ class ProductController extends Controller
         $content = $request->input('content');
         $order = $request->input('order');
         $isActive = $request->input('is_active');
-        $categoryPostID = $request->input('category_product');
+        $categoryProductID = $request->input('category_product');
+        $locationID = $request->input('location_product');
         $seoTitle = $request->input('seo_title');
         $seoDescription = $request->input('seo_description');
         $seoKeywords = $request->input('seo_keywords');
-        $code = $request->input('code');
         $price = $request->input('price');
-        $sale = $request->input('sale');
-        $finalSale = $request->input('final_price');
+        $area = $request->input('area');
         if (!IsNullOrEmptyString($price)) {
-            if (!IsNullOrEmptyString($sale)) {
-                $product->price = $price;
-                $product->sale = $sale;
-                $product->final_price = $finalSale;
-            } else {
-                $product->price = $price;
-                $product->sale = 0;
-                $product->final_price = 0;
-            }
-        } else {
-            $product->price = 0;
-            $product->sale = 0;
-            $product->final_price = 0;
+            $product->price = $price;
         }
-        if (!IsNullOrEmptyString($code)) {
-            $product->code = $code;
+        if (!IsNullOrEmptyString($area)) {
+            $product->area = $area;
         }
-//        if (!IsNullOrEmptyString($price)) {
-//            $product->price = $price;
-//            if (!IsNullOrEmptyString($sale)) {
-//                $product->sale = $sale;
-//                if ($sale != 0 && $price != 0)
-//                    $product->final_price = (int)$price - ((int)$price * (int)$sale / 100);
-//                else
-//                    $product->final_price=0;
-//            }
-//        }
-//        else{
-//            $product->price=0;
-//            $product->sale = 0;
-//            $product->final_price=0;
-//        }
         if (!IsNullOrEmptyString($order)) {
             $product->order = $order;
         }
         if (!IsNullOrEmptyString($isActive)) {
             $product->isActive = 1;
-        } else {
-            $product->isActive = 0;
         }
         if (!IsNullOrEmptyString($description)) {
             $product->description = $description;
@@ -243,7 +228,8 @@ class ProductController extends Controller
         $product->path = chuyen_chuoi_thanh_path($name);
         $product->image = $image;
         $product->content = $content;
-        $product->category_product_id = $categoryPostID;
+        $product->category_product_id = $categoryProductID;
+        $product->location_id = $locationID;
         $product->user_id = Auth::user()->id;
         $product->save();
         return redirect()->route('product.index')->with('success', 'Tạo Mới Thành Công Sản Phẩm');

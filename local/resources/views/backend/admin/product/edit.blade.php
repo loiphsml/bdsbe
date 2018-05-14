@@ -58,26 +58,28 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <strong>Mã Sản Phẩm</strong>
-                    {!! Form::text('code',null, array('placeholder' => 'Mã SP','class' => 'form-control')) !!}
+                    <strong>Vị Trí</strong>
+                    <select class="form-control" name="category_product">'
+                        @foreach($dd_locations as $key=>$data) {
+                        @if($data['index']===$product->category_product_id)
+                            <option value="{{$data['index']}}" selected>{{$data['value']}}</option>
+                        @else
+                            <option value="{{$data['index']}}">{{$data['value']}}</option>
+                        @endif
+                        @endforeach
+                    </select>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <strong>Giá: </strong>
                             {!! Form::text('price',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <strong>% Giảm Giá: </strong>
-                            {!! Form::text('sale',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <strong>Giá Giảm: </strong>
-                            {!! Form::text('final_price',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
+                            <strong>Diện Tích: </strong>
+                            {!! Form::text('area',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
                         </div>
                     </div>
                 </div>
