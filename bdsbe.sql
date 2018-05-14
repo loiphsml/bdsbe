@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2018 at 05:52 PM
+-- Generation Time: May 14, 2018 at 05:14 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.27
 
@@ -314,6 +314,7 @@ CREATE TABLE `products` (
   `path` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isActive` tinyint(1) NOT NULL DEFAULT '0',
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sub_image` longtext COLLATE utf8mb4_unicode_ci,
   `description` longtext COLLATE utf8mb4_unicode_ci,
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(11) DEFAULT '0',
@@ -328,6 +329,13 @@ CREATE TABLE `products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `path`, `isActive`, `image`, `sub_image`, `description`, `content`, `price`, `area`, `location_id`, `seo_title`, `seo_description`, `seo_keywords`, `order`, `user_id`, `category_product_id`, `created_at`, `updated_at`) VALUES
+(1, 'test1', 'test1', 1, 'images/uploads/images/31948159_2081308462106421_1383449733871173632_n.jpg', 'images/uploads/images/gt_1.jpg;images/uploads/images/gt_1.jpg;images/uploads/images/31948159_2081308462106421_1383449733871173632_n.jpg', '<p>\r\n	test1\r\n</p>', '<p>\r\n	test1\r\n</p>', 200, 200, 1, 'test1', 'test1', 'test1', 1, 1, 60, '2018-05-14 14:34:02', '2018-05-14 14:39:26');
 
 -- --------------------------------------------------------
 
@@ -534,12 +542,12 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=302;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `roles`
 --

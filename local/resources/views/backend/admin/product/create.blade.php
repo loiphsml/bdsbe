@@ -46,6 +46,14 @@
                     {{ Html::image('','',array('id'=>'showHinh','class'=>'show-image'))}}
                 </div>
                 <div class="form-group">
+                    {!! Form::button('Thêm Hình Dự Án', array('id' => 'btnBrowseMore','class'=>'btn btn-primary')) !!}
+                </div>
+                <div class="form-group">
+                    <div id="add-image" class="row">
+
+                    </div>
+                </div>
+                <div class="form-group">
                     <strong>Loại Sản Phẩm</strong>
                     {!! Form::select('category_product',$dd_category_products, null,array('class' => 'form-control')) !!}
                 </div>
