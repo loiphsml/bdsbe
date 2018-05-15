@@ -81,6 +81,15 @@ class ProductController extends Controller
         $seoKeywords = $request->input('seo_keywords');
         $price = $request->input('price');
         $area = $request->input('area');
+        $listImage = $request->input('image-choose');
+        $subImage = '';
+        if (count($listImage) != 0) {
+            foreach ($listImage as $key => $item) {
+                $subImage = $subImage . substr($item, strpos($item, 'images'), strlen($item) - 1) . ';';
+            }
+            $product->sub_image = substr($subImage, 0, -1);
+        }
+
         if (!IsNullOrEmptyString($price)) {
             $product->price = $price;
         }
@@ -159,9 +168,9 @@ class ProductController extends Controller
         foreach ($dd_locations as $key => $data) {
             if ($data->level == LOCATION_CAP_1) {
                 $data->name = ' ---- ' . $data->name;
-            } else if ($data->level == LOCATION_CAP_1_CAP_2) {
+            } else if ($data->level == LOCATION_CAP_2) {
                 $data->name = ' --------- ' . $data->name;
-            } else if ($data->level == LOCATION_CAP_1_CAP_3) {
+            } else if ($data->level == LOCATION_CAP_3) {
                 $data->name = ' ------------------ ' . $data->name;
             }
         }
@@ -172,7 +181,7 @@ class ProductController extends Controller
             return ['index' => $index, 'value' => $value];
         }, array_keys($dd_locations), $dd_locations);
 
-        return view('backend.admin.product.edit', compact('product', 'dd_category_products','dd_locations'));
+        return view('backend.admin.product.edit', compact('product', 'dd_category_products', 'dd_locations'));
     }
 
     /**
@@ -198,6 +207,19 @@ class ProductController extends Controller
         $seoKeywords = $request->input('seo_keywords');
         $price = $request->input('price');
         $area = $request->input('area');
+        $listImage = $request->input('image-choose');
+        $subImage = '';
+        if (count($listImage) != 0) {
+            foreach ($listImage as $key => $item) {
+                if (strpos($item, 'http') !== false)
+                    $subImage = $subImage . substr($item, strpos($item, 'images'), strlen($item) - 1) . ';';
+                else
+                    $subImage = $subImage . $item . ';';
+            }
+            $product->sub_image = substr($subImage, 0, -1);
+        } else {
+            $product->sub_image = '';
+        }
         if (!IsNullOrEmptyString($price)) {
             $product->price = $price;
         }

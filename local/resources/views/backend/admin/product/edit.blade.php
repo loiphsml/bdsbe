@@ -46,6 +46,23 @@
                     {{ Html::image($product->image,'',array('id'=>'showHinh','class'=>'show-image'))}}
                 </div>
                 <div class="form-group">
+                    {!! Form::button('Thêm Hình Dự Án', array('id' => 'btnBrowseMore','class'=>'btn btn-primary')) !!}
+                </div>
+                <div class="form-group">
+                    <div id="add-image" class="row">
+                        @php
+                            $listImage=explode(';',$product->sub_image);
+                        @endphp
+                        @foreach($listImage as $key=>$item)
+                            <div class="col-md-3 text-center one-image">
+                                {{ Html::image($item,'',array('id'=>'showHinh','class'=>'image-choose'))}}
+                                {{ Form::hidden('image-choose[]', $item) }}
+                                <span class='remove-image'>X</span>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="form-group">
                     <strong>Loại Sản Phẩm</strong>
                     <select class="form-control" name="category_product">'
                         @foreach($dd_category_products as $key=>$data) {
@@ -59,9 +76,9 @@
                 </div>
                 <div class="form-group">
                     <strong>Vị Trí</strong>
-                    <select class="form-control" name="category_product">'
+                    <select class="form-control" name="location_product">'
                         @foreach($dd_locations as $key=>$data) {
-                        @if($data['index']===$product->category_product_id)
+                        @if($data['index']===$product->location_id)
                             <option value="{{$data['index']}}" selected>{{$data['value']}}</option>
                         @else
                             <option value="{{$data['index']}}">{{$data['value']}}</option>
