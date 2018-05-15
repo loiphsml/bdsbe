@@ -186,6 +186,7 @@ class LocationController extends Controller
     {
         $listId = $request->input('listID');
         $locations = Location::find(explode(',', $listId));
+        $locations->makeHidden('id');
         foreach ($locations as $key => $data) {
             $data->name = $data->name . ' ' . rand(pow(10, 2), pow(10, 3) - 1);
             $data->path = chuyen_chuoi_thanh_path($data->name);

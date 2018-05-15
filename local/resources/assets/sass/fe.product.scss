@@ -156,6 +156,46 @@ table {
   border: 2px solid #083b58;
 }
 
+.product-info {
+  .one-product {
+    transition: all 0.2s;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+    margin-bottom: 30px;
+    img.img-one-product {
+      height: 300px;
+    }
+    .info {
+      h3 {
+        margin: 10px 0px 3px 0px;
+        font-size: 20px;
+        text-transform: capitalize;
+      }
+      p.address {
+        border-bottom: 1px solid #e1e1e1;
+        padding: 10px 10px 10px 0;
+        margin-right: 20px;
+      }
+      p.description {
+        margin-top: 20px;
+        display: block;
+      }
+      .more-info {
+
+        bottom: 0;
+        border-top: 1px solid #e1e1e1;
+        padding: 10px;
+        margin-right: 20px;
+
+      }
+
+    }
+    &:hover {
+      box-shadow: 0 10px 30px 0 rgba(58, 87, 135, 0.58);
+    }
+  }
+}
+
 @media screen and(max-width: 768px) {
 
   #p_Detail_img_avatar {

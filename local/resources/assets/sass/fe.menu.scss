@@ -40,8 +40,8 @@
           position: absolute;
           transition: all 0.2s;
           background-color: $main-color;
-          //display: none;
-          opacity: 0;
+          display: none;
+          //opacity: 0;
           z-index: 9;
           list-style: none;
           width: 200%;
@@ -56,8 +56,8 @@
         }
         &:hover {
           ul.sub-menu {
-            //display: block;
-            opacity: 1;
+            display: block;
+            //opacity: 1;
           }
         }
       }

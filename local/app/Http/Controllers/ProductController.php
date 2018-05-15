@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\CategoryItem;
 use App\Location;
 use App\Product;
+use App\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,7 +58,9 @@ class ProductController extends Controller
         $newArray2 = [];
         self::showCategoryDropDown($dd_locations, 0, $newArray2);
         $dd_locations = array_pluck($newArray2, 'name', 'id');
-        return view('backend.admin.product.create', compact('roles', 'dd_category_products', 'dd_locations'));
+        $dd_units=Unit::get();
+        $dd_units = array_pluck($dd_units, 'name', 'id');
+        return view('backend.admin.product.create', compact('roles', 'dd_category_products', 'dd_locations','dd_units'));
     }
 
     /**
@@ -76,6 +79,7 @@ class ProductController extends Controller
         $isActive = $request->input('is_active');
         $categoryProductID = $request->input('category_product');
         $locationID = $request->input('location_product');
+        $unitID = $request->input('unit');
         $seoTitle = $request->input('seo_title');
         $seoDescription = $request->input('seo_description');
         $seoKeywords = $request->input('seo_keywords');
@@ -122,6 +126,7 @@ class ProductController extends Controller
         $product->content = $content;
         $product->category_product_id = $categoryProductID;
         $product->location_id = $locationID;
+        $product->unit_id = $unitID;
         $product->user_id = Auth::user()->id;
         $product->save();
         return redirect()->route('product.index')->with('success', 'Tạo Mới Thành Công Sản Phẩm');
@@ -180,8 +185,14 @@ class ProductController extends Controller
         $dd_locations = array_map(function ($index, $value) {
             return ['index' => $index, 'value' => $value];
         }, array_keys($dd_locations), $dd_locations);
+        $dd_units=Unit::get();
+        $dd_units = array_pluck($dd_units, 'name', 'id');
+        $dd_units = array_map(function ($index, $value) {
+            return ['index' => $index, 'value' => $value];
+        }, array_keys($dd_units), $dd_units);
 
-        return view('backend.admin.product.edit', compact('product', 'dd_category_products', 'dd_locations'));
+
+        return view('backend.admin.product.edit', compact('product', 'dd_category_products', 'dd_locations','dd_units'));
     }
 
     /**
@@ -202,6 +213,7 @@ class ProductController extends Controller
         $isActive = $request->input('is_active');
         $categoryProductID = $request->input('category_product');
         $locationID = $request->input('location_product');
+        $unitID = $request->input('unit');
         $seoTitle = $request->input('seo_title');
         $seoDescription = $request->input('seo_description');
         $seoKeywords = $request->input('seo_keywords');
@@ -254,6 +266,7 @@ class ProductController extends Controller
         $product->content = $content;
         $product->category_product_id = $categoryProductID;
         $product->location_id = $locationID;
+        $product->unit_id = $unitID;
         $product->user_id = Auth::user()->id;
         $product->save();
         return redirect()->route('product.index')->with('success', 'Tạo Mới Thành Công Sản Phẩm');
@@ -294,6 +307,7 @@ class ProductController extends Controller
     {
         $listId = $request->input('listID');
         $products = Product::find(explode(',', $listId));
+        $products->makeHidden('id');
         foreach ($products as $key => $data) {
             $data->name = $data->name . ' ' . rand(pow(10, 2), pow(10, 3) - 1);
             $data->path = chuyen_chuoi_thanh_path($data->name);

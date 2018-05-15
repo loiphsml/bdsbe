@@ -476,7 +476,7 @@ This class is added to the container
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   background-color: #0880c1;
-  opacity: 0;
+  display: none;
   z-index: 9;
   list-style: none;
   width: 200%;
@@ -492,7 +492,7 @@ This class is added to the container
 }
 
 #menu #menu-bottom ul.main-menu li.li-has-item-down:hover ul.sub-menu {
-  opacity: 1;
+  display: block;
 }
 
 #h_product h3.title {
@@ -572,6 +572,104 @@ This class is added to the container
 #h_product .one-product:hover {
   -webkit-box-shadow: 0 10px 30px 0 rgba(58, 87, 135, 0.58);
           box-shadow: 0 10px 30px 0 rgba(58, 87, 135, 0.58);
+}
+
+#h_contact .lh-top {
+  display: table;
+}
+
+#h_contact .lh-top span.lh-span-dash {
+  display: table-cell;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+#h_contact .lh-top span.lh-span-dash .line {
+  height: 1px;
+  border-top: 3px solid #0880c1;
+  border-bottom: 3px solid #ebebeb;
+  display: block;
+  position: relative;
+  top: 1px;
+  width: 100%;
+}
+
+#h_contact .lh-top h4 {
+  white-space: pre;
+  padding: 0 0.8em;
+  color: #0880c1;
+  text-transform: uppercase;
+}
+
+#h_contact .lh-red {
+  color: red;
+  margin-left: 5px;
+}
+
+#h_contact p.lh-p-1 {
+  font-size: 18px;
+  line-height: 26px;
+  font-style: italic;
+}
+
+#h_contact p.lh-p-2 {
+  font-size: 18px;
+  line-height: 26px;
+  font-family: "Arial";
+}
+
+#h_contact input, #h_contact textarea {
+  border: 1px #0880c1 solid;
+  margin-top: 10px;
+}
+
+#h_contact .loadingSending {
+  display: none;
+  font-size: 20px;
+}
+
+#h_contact .successSending {
+  display: none;
+  font-size: 20px;
+}
+
+#h_contact [rel="popover"] {
+  position: absolute;
+  cursor: pointer;
+  display: inline-block;
+  left: -5px;
+  top: 20%;
+}
+
+#h_contact .errorEmail, #h_contact .errorName, #h_contact .errorPhone {
+  display: none;
+  color: red;
+  -webkit-animation: blinker 1s linear 3;
+          animation: blinker 1s linear 3;
+}
+
+@-webkit-keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #lien-he .lh-top span.lh-span-dash {
+    display: none;
+  }
+  #lien-he .lh-top h4 {
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 #s_info {
@@ -782,6 +880,48 @@ table th, table td {
   border: 2px solid #083b58;
 }
 
+.product-info .one-product {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.product-info .one-product img.img-one-product {
+  height: 300px;
+}
+
+.product-info .one-product .info h3 {
+  margin: 10px 0px 3px 0px;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.product-info .one-product .info p.address {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 10px 10px 10px 0;
+  margin-right: 20px;
+}
+
+.product-info .one-product .info p.description {
+  margin-top: 20px;
+  display: block;
+}
+
+.product-info .one-product .info .more-info {
+  bottom: 0;
+  border-top: 1px solid #e1e1e1;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.product-info .one-product:hover {
+  -webkit-box-shadow: 0 10px 30px 0 rgba(58, 87, 135, 0.58);
+          box-shadow: 0 10px 30px 0 rgba(58, 87, 135, 0.58);
+}
+
 @media screen and (max-width: 768px) {
   #p_Detail_img_avatar {
     height: auto;
@@ -882,4 +1022,59 @@ table th, table td {
 .active,
 .demo:hover {
   opacity: 1;
+}
+
+#footer {
+  color: white;
+}
+
+#footer .footer-top {
+  background-color: #0880c1;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+#footer .footer-top h4.title {
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+#footer .footer-top ul {
+  list-style: none;
+}
+
+#footer .footer-top ul li {
+  line-height: 1.5;
+}
+
+#footer .footer-top ul li i {
+  margin-right: 10px;
+  color: white;
+}
+
+#footer .footer-top .description {
+  line-height: 1.5;
+}
+
+#footer .footer-bottom {
+  background-color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#footer .footer-bottom .bottom-right {
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  #footer .footer-bottom {
+    line-height: 1.5;
+  }
+  #footer .footer-bottom .bottom-left {
+    text-align: center;
+  }
+  #footer .footer-bottom .bottom-right {
+    text-align: center;
+  }
 }

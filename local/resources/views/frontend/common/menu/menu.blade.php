@@ -24,7 +24,8 @@
     <div id="menu-bottom">
         <div class="container">
             <ul class="main-menu">
-                <li class="li-normal"><a href="">Menu 1</a></li>
+                <li class="li-normal"><a href="{{URL::to('/')}}">Trang Chủ</a></li>
+                <li class="li-normal"><a href="">Giới Thiệu</a></li>
                 <li class="li-has-item-down"><a href="">Menu 2</a>
                     <ul class="sub-menu">
                         <li class="li-normal"><a href="">Sub Menu 1</a></li>
@@ -34,9 +35,7 @@
 
                     </ul>
                 </li>
-                <li class="li-normal"><a href="">Menu 3</a></li>
-                <li class="li-normal"><a href="">Menu 4</a></li>
-                <li class="li-normal"><a href="">Menu 5</a></li>
+                <li class="li-normal"><a href="">Liên Hệ</a></li>
             </ul>
         </div>
     </div>

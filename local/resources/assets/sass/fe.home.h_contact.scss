@@ -1,0 +1,81 @@
+#h_contact {
+  .lh-top {
+    display: table;
+    span.lh-span-dash {
+      display: table-cell;
+      height: 1px;
+      position: relative;
+      vertical-align: middle;
+      width: 50%;
+      .line {
+        height: 1px;
+        border-top: 3px solid $main-color;
+        border-bottom: 3px solid #ebebeb;
+        display: block;
+        position: relative;
+        top: 1px;
+        width: 100%;
+      }
+    }
+    h4{
+      white-space: pre;
+      padding: 0 0.8em;
+      color: $main-color;
+      text-transform: uppercase;
+    }
+  }
+  .lh-red{
+    color: red;
+    margin-left: 5px;
+  }
+  p.lh-p-1{
+    font-size: 18px;
+    line-height: 26px;
+    font-style: italic;
+  }
+  p.lh-p-2{
+    font-size: 18px;
+    line-height: 26px;
+    font-family: "Arial";
+  }
+  input,textarea{
+    border: 1px $main-color solid;
+    margin-top: 10px;
+  }
+  .loadingSending {
+    display: none;
+    font-size: 20px;
+  }
+  .successSending{
+    display: none;
+    font-size: 20px;
+  }
+  [rel="popover"] {
+    position: absolute;
+    cursor: pointer;
+    display: inline-block;
+    left: -5px;
+    top: 20%;
+  }
+  .errorEmail,.errorName,.errorPhone{
+    display: none;
+    color: red;
+    animation: blinker 1s linear 3;
+  }
+  @keyframes blinker {
+    50% { opacity: 0; }
+  }
+}
+@media screen and(max-width: 768px) {
+  #lien-he{
+    .lh-top {
+      span.lh-span-dash {
+        display: none;
+      }
+      h4{
+        white-space:normal;
+        text-align: center;
+      }
+    }
+  }
+}

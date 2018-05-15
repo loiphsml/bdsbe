@@ -2,39 +2,51 @@
 
     <div class="row p-0">
         <!-- Full-width images with number text -->
+        @php
+            $subImage=explode(';',$data['product']->sub_image);
+            $i=1;
+        $sum=$i+count($subImage)
+        @endphp
         <div class="mySlides">
-            <div class="numbertext">1 / 6</div>
-            <img src="https://picsum.photos/1920/1200?image=823" alt=""/>
+            <div class="numbertext">{{$i}} / {{$sum}}</div>
+            {{ Html::image($data['product']->image,'',array('class'=>'img-one-product')) }}
         </div>
+        @php
+            $i++;
+        @endphp
 
-        <div class="mySlides">
-            <div class="numbertext">2 / 6</div>
-            <img src="https://picsum.photos/1920/1200?image=836" alt=""/>
-        </div>
+        @foreach($subImage as $key=>$item)
+            <div class="mySlides">
+                <div class="numbertext">{{$i}} / {{$sum}}</div>
+                {{ Html::image($item,'',array('class'=>'img-one-product')) }}
+            </div>
+        @php
+            $i++;
+        @endphp
+    @endforeach
+    {{--<div class="mySlides">--}}
+    {{--<div class="numbertext">3 / 6</div>--}}
+    {{--<img src="https://picsum.photos/1920/1200?image=817" alt=""/>--}}
+    {{--</div>--}}
 
-        <div class="mySlides">
-            <div class="numbertext">3 / 6</div>
-            <img src="https://picsum.photos/1920/1200?image=817" alt=""/>
-        </div>
+    {{--<div class="mySlides">--}}
+    {{--<div class="numbertext">4 / 6</div>--}}
+    {{--<img src="https://picsum.photos/1920/1200?image=856" alt=""/>--}}
+    {{--</div>--}}
 
-        <div class="mySlides">
-            <div class="numbertext">4 / 6</div>
-            <img src="https://picsum.photos/1920/1200?image=856" alt=""/>
-        </div>
+    {{--<div class="mySlides">--}}
+    {{--<div class="numbertext">5 / 6</div>--}}
+    {{--<img src="https://unsplash.it/1920/1200?image=494" alt=""/>--}}
+    {{--</div>--}}
 
-        <div class="mySlides">
-            <div class="numbertext">5 / 6</div>
-            <img src="https://unsplash.it/1920/1200?image=494" alt=""/>
-        </div>
-
-        <div class="mySlides">
-            <div class="numbertext">6 / 6</div>
-            <img src="https://picsum.photos/1920/1200?image=856" alt=""/>
+    {{--<div class="mySlides">--}}
+    {{--<div class="numbertext">6 / 6</div>--}}
+    {{--<img src="https://picsum.photos/1920/1200?image=856" alt=""/>--}}
 
 
-        </div>
+    {{--</div>--}}
 
-        <!-- Next and previous buttons -->
+    <!-- Next and previous buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
@@ -47,33 +59,47 @@
     <div class="row">
         <div class="caption-container p-3" style="width:100%;">
             <p id="caption"></p>
-        </div></div>
+        </div>
+    </div>
     <!-- Thumbnail images -->
     <div class="row">
+        @php
+            $i=1;
+        @endphp
         <div class="column">
-            <img class="demo cursor" src="https://picsum.photos/1920/1200?image=823" style="width:100%"
-                 onclick="currentSlide(1)" alt="The Woods">
+            {{--{{ Html::image($data['product']->image,'',array('class'=>'demo cursor','style'=>'width:100%','onclick'=>'currentSlide('+$i+')')) }}--}}
+            <img class="demo cursor" src="{{URL::to($data['product']->image)}}" style="width:100%"
+            onclick="currentSlide(1)" alt="">
         </div>
-        <div class="column">
-            <img class="demo cursor" src="https://picsum.photos/1920/1200?image=836" style="width:100%"
-                 onclick="currentSlide(2)" alt="Trolltunga, Norway">
-        </div>
-        <div class="column">
-            <img class="demo cursor" src="https://picsum.photos/1920/1200?image=817" style="width:100%"
-                 onclick="currentSlide(3)" alt="Mountains and fjords">
-        </div>
-        <div class="column">
-            <img class="demo cursor" src="https://picsum.photos/1920/1200?image=856" style="width:100%"
-                 onclick="currentSlide(4)" alt="Northern Lights">
-        </div>
-        <div class="column">
-            <img class="demo cursor" src="https://unsplash.it/1920/1200?image=494" style="width:100%"
-                 onclick="currentSlide(5)" alt="Nature and sunrise">
-        </div>
-        <div class="column">
-            <img class="demo cursor" src="https://picsum.photos/1920/1200?image=856" style="width:100%"
-                 onclick="currentSlide(6)" alt="Snowy Mountains">
-        </div>
+        @php
+            $i++;
+        @endphp
+        @foreach($subImage as $key=>$item)
+            <div class="column">
+                {{--{{ Html::image($item,'',array('class'=>'demo cursor','style'=>'width:100%','onclick'=>'currentSlide('+$i+')')) }}--}}
+                <img class="demo cursor" src="{{URL::to($item)}}" style="width:100%"
+                onclick="currentSlide({{$i}})" alt="">
+            </div>
+            @php
+                $i++;
+            @endphp
+        @endforeach
+        {{--<div class="column">--}}
+        {{--<img class="demo cursor" src="https://picsum.photos/1920/1200?image=817" style="width:100%"--}}
+        {{--onclick="currentSlide(3)" alt="Mountains and fjords">--}}
+        {{--</div>--}}
+        {{--<div class="column">--}}
+        {{--<img class="demo cursor" src="https://picsum.photos/1920/1200?image=856" style="width:100%"--}}
+        {{--onclick="currentSlide(4)" alt="Northern Lights">--}}
+        {{--</div>--}}
+        {{--<div class="column">--}}
+        {{--<img class="demo cursor" src="https://unsplash.it/1920/1200?image=494" style="width:100%"--}}
+        {{--onclick="currentSlide(5)" alt="Nature and sunrise">--}}
+        {{--</div>--}}
+        {{--<div class="column">--}}
+        {{--<img class="demo cursor" src="https://picsum.photos/1920/1200?image=856" style="width:100%"--}}
+        {{--onclick="currentSlide(6)" alt="Snowy Mountains">--}}
+        {{--</div>--}}
     </div>
 
 </div>

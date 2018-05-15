@@ -13,17 +13,32 @@ class FrontendController extends Controller
     {
         $this->frontendRepository = $frontendRepository;
     }
-    public function getFrontend(){
+
+    public function getFrontend()
+    {
         $data = $this->frontendRepository->getFrontend();
         return view('frontend.home.index', compact('data'));
     }
 
-    public function getDistrict(Request $request){
+    public function getDistrict(Request $request)
+    {
         $data = $this->frontendRepository->getDistrict($request);
         return response()->json([
             'success' => $data['success'],
-            'districts'=>$data['districts']
+            'districts' => $data['districts']
         ]);
+    }
+
+    public function getSearch(Request $request)
+    {
+        $data = $this->frontendRepository->getSearch($request);
+        return view('frontend.search.index', compact('data'));
+    }
+
+    public function getDetailProduct($path)
+    {
+        $data = $this->frontendRepository->getDetailProduct($path);
+        return view('frontend.product.index', compact('data'));
     }
 
 //    public function getProductByCategoryMain($path)

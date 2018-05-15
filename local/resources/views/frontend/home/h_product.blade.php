@@ -7,11 +7,11 @@
             @foreach($data['products'] as $key=>$item)
                 <div class="col-md-4 mb-4">
                     <div class="card one-product h-100">
-                        <a href="#">
+                        <a href="{{URL::to('danh-muc/'.$item->path)}}">
                             {{ Html::image($item->image,'',array('class'=>'img-one-product')) }}
                         </a>
                         <div class="card-body">
-                            <h2 class="title card-title"><a href="">{{$item->name}}</a></h2>
+                            <h2 class="title card-title"><a href="{{URL::to('danh-muc/'.$item->path)}}">{{$item->name}}</a></h2>
                         </div>
                         <div class="info card-footer">
                             <ul class="info-top">

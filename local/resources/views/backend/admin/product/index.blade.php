@@ -74,6 +74,7 @@
                     <th>Tên Bất Động Sản</th>
                     <th>Hình</th>
                     <th>Giá</th>
+                    <th>ĐVT</th>
                     <th>Diện Tích</th>
                     <th>Loại</th>
                     <th>Người Đăng</th>
@@ -88,7 +89,8 @@
                     <td>{{ $data->name }}</td>
                     <td>{{Html::image($data->image,'',array('class'=>'product-img'))}}</td>
                     <td>{{$data->price}}</td>
-                    <td>{{$data->area}}</td>
+                    <td>{{$data->unit->name}}</td>
+                    <td>{{$data->area}} m2</td>
                     <td>{{ $data->categoryproduct->name }}</td>
                     <td>{{ $data->users->name }}</td>
                     <td>{{ $data->created_at }}</td>

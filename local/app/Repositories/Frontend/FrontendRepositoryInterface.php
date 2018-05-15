@@ -41,4 +41,6 @@ interface FrontendRepositoryInterface
 
     public function getDistrict(Request $request);
 
+    public function getDetailProduct($path);
+
 }

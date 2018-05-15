@@ -9,7 +9,7 @@ class Product extends Model
     protected $fillable = [
         'id','name','path','description','content','code' ,'image','sub_image','isActive','seo_title','seo_description','seo_keywords','price','sale','final_price','user_id','category_product_id','created_at','updated_at'
     ];
-    protected $hidden = ['id'];
+//    protected $hidden = ['id'];
     public function users()
     {
         return $this->belongsTo('App\User', 'user_id');
@@ -21,5 +21,9 @@ class Product extends Model
     public function location()
     {
         return $this->belongsTo('App\Location', 'location_id');
+    }
+    public function unit()
+    {
+        return $this->belongsTo('App\unit', 'unit_id');
     }
 }

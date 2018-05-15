@@ -76,7 +76,7 @@
                 </div>
                 <div class="form-group">
                     <strong>Vị Trí</strong>
-                    <select class="form-control" name="location_product">'
+                    <select class="form-control" name="location_product">
                         @foreach($dd_locations as $key=>$data) {
                         @if($data['index']===$product->location_id)
                             <option value="{{$data['index']}}" selected>{{$data['value']}}</option>
@@ -87,13 +87,27 @@
                     </select>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <strong>Giá: </strong>
                             {!! Form::text('price',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <strong>ĐVT: </strong>
+                            <select class="form-control" name="unit">
+                                @foreach($dd_units as $key=>$data) {
+                                @if($data['index']===$product->unit_id)
+                                    <option value="{{$data['index']}}" selected>{{$data['value']}}</option>
+                                @else
+                                    <option value="{{$data['index']}}">{{$data['value']}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
                         <div class="form-group">
                             <strong>Diện Tích: </strong>
                             {!! Form::text('area',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}

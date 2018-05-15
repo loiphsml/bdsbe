@@ -210,12 +210,7 @@ class FrontendRepository implements FrontendRepositoryInterface
             }
             $item->location = $location;
         }
-//        $cities = Location::where('level', 0)->orderBy('order')->get();
-//        $dd_locations_city = array_prepend(array_pluck($cities, 'name', 'id'), '--Chọn Khu Vực--', '-1');
-
         $data['products'] = $products;
-//        $data['dd_locations_city'] = $dd_locations_city;
-
         return $data;
     }
 
@@ -229,7 +224,70 @@ class FrontendRepository implements FrontendRepositoryInterface
 
     public function getSearch(Request $request)
     {
-        // TODO: Implement getSearch() method.
+        $data = [];
+        $name = $request->input('name');
+        $district = $request->input('district');
+        $city = $request->input('city');
+        $price = $request->input('price');
+        $areaFrom = $request->input('area-from');
+        $areaTo = $request->input('area-to');
+        $products = Product::query();
+        if (!IsNullOrEmptyString($name)) {
+            $name = preg_replace('/\s+/', ' ', $name);
+            $products->where('name', 'like', '%' . $name . '%');
+        }
+        if (!IsNullOrEmptyString($city)) {
+            if ($city !== '-1')
+                if ($district == '-1') {
+                    $location = Location::select('id')->where('parent_id', $city)->get();
+                    $products->whereIn('location_id', $location);
+                }
+        }
+        if (!IsNullOrEmptyString($district)) {
+            if ($district !== '-1') {
+                $products->where('location_id', $district);
+            }
+        }
+        if (!IsNullOrEmptyString($areaFrom)) {
+            $products->where('area', '>=', $areaFrom);
+        }
+        if (!IsNullOrEmptyString($areaTo)) {
+            $products->where('area', '<=', $areaTo);
+        }
+
+
+        $products = $products->get();
+        if (!IsNullOrEmptyString($price)) {
+            if ($price !== '-1') {
+                $price = explode('-', $price);
+                foreach ($products as $key => $item) {
+                    if ($item->unit_id == 2) {
+                        if ($item->price <= $price[0] || $item->price >= $price[1])
+                            $products->forget($key);
+                    } elseif ($item->unit_id == 1) {
+                        $final_price = (int)$item->price * (int)$item->area;
+                        if ($final_price < $price[0] || $final_price > $price[1])
+                            $products->forget($key);
+                    } else {
+
+                        $final_price = (int)$item->price * 1000;
+//                        dd($price);
+                        if ($final_price < $price[0] || $final_price > $price[1])
+                            $products->forget($key);
+                    }
+                }
+            }
+        }
+        foreach ($products as $key => $item) {
+            $location = $item->location->name;
+            if ($item->location->parent_id != 0) {
+                $location = $location . ', ' . Location::where('id', $item->location->parent_id)->first()->name;
+            }
+
+            $item->location = $location;
+        }
+        $data['products'] = $products;
+        return $data;
     }
 
     public function getDistrict(Request $request)
@@ -239,6 +297,25 @@ class FrontendRepository implements FrontendRepositoryInterface
         $districts = Location::where('parent_id', $id)->get();
         $data['success'] = 'success';
         $data['districts'] = $districts;
+        return $data;
+    }
+
+    public function getDetailProduct($path)
+    {
+        $data = [];
+        $product = Product::where('path', $path)->first();
+        $location = $product->location->name;
+        if ($product->location->parent_id != 0) {
+            $location = $location . ', ' . Location::where('id', $product->location->parent_id)->first()->name;
+        }
+        $product->finalLocation = $location;
+        $product->description = loai_bo_html_tag($product->description);
+        $otherProduct = Product::where('id','!=', $product->id)->take(6)->get();
+        foreach ($otherProduct as $key => $item) {
+            $item->description = loai_bo_html_tag($item->description);
+        }
+        $data['product'] = $product;
+        $data['otherProduct'] = $otherProduct;
         return $data;
     }
 

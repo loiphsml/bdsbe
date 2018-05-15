@@ -62,13 +62,20 @@
                     {!! Form::select('location_product',$dd_locations, null,array('class' => 'form-control')) !!}
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <strong>Giá: </strong>
                             {!! Form::text('price',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <strong>ĐVT: </strong>
+                            {!! Form::select('unit',$dd_units, null,array('class' => 'form-control')) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
                         <div class="form-group">
                             <strong>Diện Tích: </strong>
                             {!! Form::text('area',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}

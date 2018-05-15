@@ -1,23 +1,18 @@
 <?php
 
 
-Route::get('/','FrontendController@getFrontend');
-Route::post('/getDistrict','FrontendController@getDistrict');
+Route::get('/', 'FrontendController@getFrontend');
+Route::post('/getDistrict', 'FrontendController@getDistrict');
 
 
 Route::get('/danh-muc-bds', function () {
     return view('frontend.categories.index');
 });
 
-Route::get('/danh-muc/can-ho-a', function () {
-    return view('frontend.product.index');
-});
+Route::get('/danh-muc/{path}', 'FrontendController@getDetailProduct');
 
 
-//Route::post('/tim-kiem','FrontendController@getSearch')->name('search');
-Route::get('/tim-kiem',function(){
-    return view('frontend.search.index');
-});
+Route::post('/tim-kiem','FrontendController@getSearch')->name('search.start');
 
 
 Route::get('/admin/sml_login', 'AuthController@checklogin');
@@ -99,13 +94,13 @@ Route::group(['middleware' => ['auth']], function () {
     //MENU
 
 
-    Route::get('sml_admin/menu','MenuController@loadMenuIndex' )->name('menu.index');
-    Route::get('sml_admin/find/{id}','MenuController@findMenuById' );
-    Route::get('sml_admin/updateNodeFamily/{id}/{parentId}','MenuController@updateNodeFamily' );
-    Route::post('sml_admin/menu-create','MenuController@createNewMenu' )->name('menu.store');
-    Route::patch('sml_admin/menu-update/{id}','MenuController@updateMenu' )->name('menu.update');
-    Route::get('sml_admin/load-tree','MenuController@loadTreeMenu');
-    Route::delete('sml_admin/menu-delete/{id}','MenuController@deleteMenu');
+    Route::get('sml_admin/menu', 'MenuController@loadMenuIndex')->name('menu.index');
+    Route::get('sml_admin/find/{id}', 'MenuController@findMenuById');
+    Route::get('sml_admin/updateNodeFamily/{id}/{parentId}', 'MenuController@updateNodeFamily');
+    Route::post('sml_admin/menu-create', 'MenuController@createNewMenu')->name('menu.store');
+    Route::patch('sml_admin/menu-update/{id}', 'MenuController@updateMenu')->name('menu.update');
+    Route::get('sml_admin/load-tree', 'MenuController@loadTreeMenu');
+    Route::delete('sml_admin/menu-delete/{id}', 'MenuController@deleteMenu');
 
     Route::get('sml_admin/config/', ['as' => 'config.index', 'uses' => 'ConfigController@getConfig']);
     Route::post('sml_admin/config/', ['as' => 'config.store', 'uses' => 'ConfigController@saveConfig']);
