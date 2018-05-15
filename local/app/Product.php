@@ -18,4 +18,8 @@ class Product extends Model
     {
         return $this->belongsTo('App\CategoryItem', 'category_product_id');
     }
+    public function location()
+    {
+        return $this->belongsTo('App\Location', 'location_id');
+    }
 }

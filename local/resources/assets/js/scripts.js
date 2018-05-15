@@ -17,7 +17,9 @@ $(document).ready(function () {
             }
         })
     }
+
     sidebar();
+
     function runSlider() {
         plugins.slider.nivoSlider({
             effect: 'fade',
@@ -27,7 +29,34 @@ $(document).ready(function () {
             controlNav: false,
         });
     }
+
     if (plugins.slider.length) {
         runSlider();
     }
+    $('select[name=city]').change(function () {
+        var id = $(this).val();
+        var data = new FormData($(this).get(0));
+        data.append('id', id);
+        $.ajax({
+            type: "POST",
+            url: getBaseURL() + "getDistrict",
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (data) {
+                if (data.success) {
+                    var option = '<option value=\'-1\'>--Chọn Quận--</option>';
+                    data.districts.forEach(function (item) {
+                        option += "<option value='" + item['id'] + "'>" + item['name'] + "</option>"
+                    });
+                    $('select[name=district]').html(option);
+                }
+                else {
+                    alert('no')
+                }
+            }
+        });
+
+    });
 });

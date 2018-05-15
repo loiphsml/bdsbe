@@ -1,9 +1,9 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('frontend.home.index');
-});
+Route::get('/','FrontendController@getFrontend');
+Route::post('/getDistrict','FrontendController@getDistrict');
+
 
 Route::get('/danh-muc-bds', function () {
     return view('frontend.categories.index');
@@ -14,8 +14,10 @@ Route::get('/danh-muc/can-ho-a', function () {
 });
 
 
-Route::post('/tim-kiem','FrontendController@getSearch')->name('search');
-
+//Route::post('/tim-kiem','FrontendController@getSearch')->name('search');
+Route::get('/tim-kiem',function(){
+    return view('frontend.search.index');
+});
 
 
 Route::get('/admin/sml_login', 'AuthController@checklogin');

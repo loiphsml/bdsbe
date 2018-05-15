@@ -1,66 +1,35 @@
 <div id="h_product">
-    <div class="container p-0">
+    <div class="container">
         <h3 class="title">
             Danh sách bất động sản
         </h3>
         <div class="row">
-            <div class="col-md-3 one-product card">
-                {{ Html::image('images/temps/home/tmp_h_product.jpg','',array('class'=>'img-one-product')) }}
-                <div class="card-body">
-                    <h2 class="title">
-                        <a href="{{URL::to('danh-muc/can-ho-a')}}"> New Studio For Rent With 01 Bedroom In</a>
-                    </h2>
+            @foreach($data['products'] as $key=>$item)
+                <div class="col-md-4 mb-4">
+                    <div class="card one-product h-100">
+                        <a href="#">
+                            {{ Html::image($item->image,'',array('class'=>'img-one-product')) }}
+                        </a>
+                        <div class="card-body">
+                            <h2 class="title card-title"><a href="">{{$item->name}}</a></h2>
+                        </div>
+                        <div class="info card-footer">
+                            <ul class="info-top">
+                                <li><i class="fas fa-expand"></i> {{$item->area}}</li>
+                                @if($item->price!==0)
+                                    <li><i class="fas fa-dollar-sign"></i><span>{{$item->price}}</span></li>
+                                @else
+                                    <li><i class="fas fa-dollar-sign"></i><span>Liên Hệ</span></li>
+                                @endif
+                            </ul>
+                            <hr>
+                            <div class="info-bottom">
+                                <i class="fas fa-map-marker"></i>{{$item->location}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="info">
-                    <ul>
-                        <li>ID:0951</li>
-                        <li><span>Price: US$400 /month</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 one-product card">
-                {{ Html::image('images/temps/home/tmp_h_product.jpg','',array('class'=>'img-one-product')) }}
-                <div class="card-body">
-                    <h2 class="title">
-                        <a href=""> New Studio For Rent With 01 Bedroom In New Studio For Rent With 01 Bedroom In New
-                            Studio For Rent With 01 Bedroom In</a>
-                    </h2>
-                </div>
-                <div class="card-footer info">
-                    <ul>
-                        <li>ID:0951</li>
-                        <li><span>Price: US$400 /month</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 one-product card">
-                {{ Html::image('images/temps/home/tmp_h_product.jpg','',array('class'=>'img-one-product')) }}
-                <div class="card-body">
-                    <h2 class="title">
-                        <a href=""> New Studio For Rent With 01 Bedroom In</a>
-                    </h2>
-                </div>
-                <div class="info">
-                    <ul>
-                        <li>ID:0951</li>
-                        <li><span>Price: US$400 /month</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 one-product card">
-                {{ Html::image('images/temps/home/tmp_h_product.jpg','',array('class'=>'img-one-product')) }}
-                <div class="card-body">
-                    <h2 class="title">
-                        <a href=""> New Studio For Rent With 01 Bedroom In</a>
-                    </h2>
-                </div>
-                <div class="info">
-                    <ul>
-                        <li>ID:0951</li>
-                        <li><span>Price: US$400 /month</span></li>
-                    </ul>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

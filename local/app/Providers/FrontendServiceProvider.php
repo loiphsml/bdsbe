@@ -13,7 +13,10 @@ class FrontendServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        view()->composer('*', 'App\Http\ViewComposers\SidebarComposer');
+        view()->composer([
+            'frontend.home.index',
+            'frontend.search.index'
+        ], 'App\Http\ViewComposers\SearchComposer');
         view()->composer('*', 'App\Http\ViewComposers\FrontendComposer');
     }
 

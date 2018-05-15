@@ -45,7 +45,10 @@ mix
 
     .sass('resources/assets/sass/frontend.scss', '../css/frontend.css').options({processCssUrls: false})
     .sass('resources/assets/sass/backend.scss', '../css/backend.css')
-    .styles('resources/assets/js/scripts.js', '../js/scripts.js')
+    .styles([
+        'resources/assets/js/ulti.js',
+        'resources/assets/js/scripts.js',
+    ],'../js/scripts.js')
     .styles([
         'resources/assets/sass/login1.scss',
     ], '../css/login.css')

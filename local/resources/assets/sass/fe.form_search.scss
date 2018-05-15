@@ -1,0 +1,26 @@
+.area-right {
+  background-color: $main-color;
+  padding: 20px;
+}
+#form-search {
+  label {
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+
+  }
+  input {
+    border-radius: inherit;
+  }
+  select {
+    border-radius: inherit;
+  }
+  button#btn-search {
+    border: none;
+    padding: 15px;
+    background-color: $color-title;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}

@@ -222,6 +222,8 @@ class ProductController extends Controller
         }
         if (!IsNullOrEmptyString($price)) {
             $product->price = $price;
+        }else{
+            $product->price=0;
         }
         if (!IsNullOrEmptyString($area)) {
             $product->area = $area;
