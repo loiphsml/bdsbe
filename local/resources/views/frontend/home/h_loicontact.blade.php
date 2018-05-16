@@ -65,20 +65,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 one-item text-center">
-                <h2 class="title">Hồ Sơ Hoàn Thành</h2>
-                <div id="hs1" class="count-statis">500+</div>
+
             </div>
             <div class="col-md-3 one-item text-center">
-                <h2 class="title">KHONG BIET</h2>
-                <div id="hs3" class="count-statis">100%</div>
+
             </div>
             <div class="col-md-3 one-item text-center">
-                <h2 class="title">Khách Hàng</h2>
-                <div id="hs3" class="count-statis">100%</div>
+
             </div>
             <div class="col-md-3 one-item text-center">
-                <h2 class="title">Nhân Viên</h2>
-                <div id="hs4" class="count-statis">500+</div>
+
             </div>
         </div>
     </div>
