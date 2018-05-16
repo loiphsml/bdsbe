@@ -11,9 +11,9 @@ Route::get('/danh-muc-bds', function () {
 
 Route::get('/danh-muc/{path}', 'FrontendController@getDetailProduct');
 
-
+Route::get('/trang/{path}','FrontendController@getPageContent');
 Route::post('/tim-kiem','FrontendController@getSearch')->name('search.start');
-
+Route::post('/sendmail/send', ['as' => 'mail.send', 'uses' => 'MailController@send']);
 
 Route::get('/admin/sml_login', 'AuthController@checklogin');
 Route::post('sml_login', 'AuthController@login')->name('login');
@@ -102,8 +102,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('sml_admin/load-tree', 'MenuController@loadTreeMenu');
     Route::delete('sml_admin/menu-delete/{id}', 'MenuController@deleteMenu');
 
-    Route::get('sml_admin/config/', ['as' => 'config.index', 'uses' => 'ConfigController@getConfig']);
-    Route::post('sml_admin/config/', ['as' => 'config.store', 'uses' => 'ConfigController@saveConfig']);
+    //CONFIG
+    //------GENERAL
+    Route::get('sml_admin/config/', ['as' => 'config.general.index', 'uses' => 'ConfigGeneralController@getConfig']);
+    Route::post('sml_admin/config/', ['as' => 'config.general.store', 'uses' => 'ConfigGeneralController@saveConfig']);
+    //-------EMAIL
 
+    Route::get('sml_admin/config/email', ['as' => 'config.email.index', 'uses' => 'ConfigEmailController@getEmailConfig']);
+    Route::post('sml_admin/config/email', ['as' => 'config.email.store', 'uses' => 'ConfigEmailController@saveEmailConfig']);
 
 });

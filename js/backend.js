@@ -1,232 +1,1 @@
-var token = $('meta[name="csrf-token"]').attr('content');function getBaseURL() {    var url = location.href;  // entire url including querystring - also: window.location.href;    var baseURL = url.substring(0, url.indexOf('/', 14));    if (baseURL.indexOf('http://localhost') != -1) {        // Base Url for localhost        var url = location.href;  // window.location.href;        var pathname = location.pathname;  // window.location.pathname;        var index1 = url.indexOf(pathname);        var index2 = url.indexOf("/", index1 + 1);        var baseLocalUrl = url.substr(0, index2);        return baseLocalUrl + "/";    }    else {        // Root Url for domain name        return baseURL + "/";    }}function selectFileWithKCFinder(elementPath, showHinhId) {    window.KCFinder = {        callBack: function (url) {            var output = document.getElementById(elementPath);            output.value = url;            $('#' + showHinhId).show();            $('#' + showHinhId).fadeIn("fast").attr('src', url);            window.KCFinder = null;        }    };    window.open(getBaseURL() + 'js/kcfinder/browse.php?type=images', 'kcfinder_textbox',        'status=0, toolbar=0, location=0, menubar=0, directories=0, ' +        'resizable=1, scrollbars=0, width=800, height=600'    );    if ($('#' + elementPath).val() == '')        $('#' + showHinhId).hide();    else        $('#' + showHinhId).show();}function integratedCKEDITOR(elementID, height) {    if ($('#' + elementID).length) {        var editor1=CKEDITOR.replace(elementID, {            height: height,            language: 'vi',            format_tags: 'p;h1;h2;h3;pre',            filebrowserBrowseUrl: '../../../js/kcfinder/browse.php?type=files',            filebrowserImageBrowseUrl: '../../../js/kcfinder/browse.php?type=images',            filebrowserFlashBrowseUrl: '../../../js/kcfinder/browse.php?type=flash',            filebrowserUploadUrl: '../../../js/kcfinder/upload.php?type=files',            filebrowserImageUploadUrl: '../../../js/kcfinder/upload.php?type=images',            filebrowserFlashUploadUrl: '../../../js/kcfinder/upload.php?type=flash',            extraAllowedContent : 'div',        });        editor1.on('instanceReady', function() {            // Output self-closing tags the HTML4 way, like <br>.            this.dataProcessor.writer.selfClosingEnd = '>';            // Use line breaks for block elements, tables, and lists.            var dtd = CKEDITOR.dtd;            for ( var e in CKEDITOR.tools.extend( {}, dtd.$nonBodyContent, dtd.$block, dtd.$listItem, dtd.$tableContent ) ) {                this.dataProcessor.writer.setRules( e, {                    indent: true,                    breakBeforeOpen: true,                    breakAfterOpen: true,                    breakBeforeClose: true,                    breakAfterClose: true                });            }            // Start in source mode.            // this.setMode('source');        });    }}function integrateSearch(elementID,formID){    $('#'+elementID).click(function () {        if ($('#txtSearch').val().trim() == '')            return;        if ($('#txtSearch').val().trim().replace(/ +(?= )/g, '') == $("input[name='hdKeyword']").val())            return;        $('#'+formID).submit();    });}function isEmpty(val) {    return ((val !== '') && (val !== undefined) && (val.length > 0) && (val !== null));}$('.remove-image').click(function () {    $(this).parent().remove();});
-integratedCKEDITOR('description-page',height=200);
-// integratedCKEDITOR('seo-description',height=200);
-if ($('#btnBrowseImage').length) {
-    var button1 = document.getElementById('btnBrowseImage');
-    button1.onclick = function () {
-        selectFileWithKCFinder('pathImage','showHinh');
-    }
-}
-
-$('.ulti-copy').click(function(){
-    var selected = [];
-    $('input[type=checkbox][name=id\\[\\]]').each(function() {
-        if ($(this).is(":checked")) {
-            selected.push($(this).val());
-        }
-    });
-    if(selected.length!=0)
-    {
-        $('input[name=listID]').val(selected);
-        alert('Đã lưu sản phẩm');
-    }
-    else{
-        alert('Mời bạn chọn sản phẩm');
-    }
-    console.log(selected);
-    // alert(id[0]);
-});
-$('.ulti-paste').click(function(){
-    if( !$('input[name=listID]').val()){
-        alert('Bạn chưa Sao Chép Hoặc Chưa chọn sản phẩm');
-    }
-    else{
-        $('#formPaste').submit();
-    }
-});
-// integratedCKEDITOR('description-page',height=200);
-integratedCKEDITOR('content-page',height=800);
-// integratedCKEDITOR('seo-description-page',height=200);
-if ($('#btnBrowseImagePage').length) {
-    var button1 = document.getElementById('btnBrowseImagePage');
-    button1.onclick = function () {
-        selectFileWithKCFinder('pathImagePage','showHinhPage');
-    }
-}
-integratedCKEDITOR('description-post',height=200);
-integratedCKEDITOR('content-post',height=800);
-// integratedCKEDITOR('seo-description-post',height=200);
-if ($('#btnBrowseImagePost').length) {
-    var button1 = document.getElementById('btnBrowseImagePost');
-    button1.onclick = function () {
-        selectFileWithKCFinder('pathImagePost','showHinhPost');
-    }
-};
-function loadDataFormWhenSelectTreeMenu(data) {
-    $('input[name=state]').val('edit');
-    $('form#frmCreateThuNghiem').attr('action', getBaseURL() + "sml_admin/menu-update/" + data.id);
-    $('input[name=_method]').val('PATCH');
-    $('input[name=name]').val(data.name);
-    $('input[name=parentId]').val(data['parent_id']);
-    $('input[name=mainId]').val(data.id);
-    $('input[name=level]').val(data.level);
-    $('input[name=order]').val(data.order);
-    $('button#deleteMenu').show();
-    $('.test_info_right h3.title').html('Cập Nhật Menu: ' + data.name);
-    (data.isActive === 1) ? $('input[name=menu_is_active]').prop('checked', true) : $('input[name=menu_is_active]').prop('checked', false);
-    if (data.type === 1) {
-        $('#menu_state_page_category').hide();
-        $('#menu_state_page_single').show();
-        $('input[name=state_menu_category]').prop('checked', false);
-        $('select[name=page_id]').children("option").removeAttr('selected');
-        $('select[name=page_id]').children("option[value=" + data['content_id'] + "]").attr('selected', 'selected');
-    } else {
-        $('#menu_state_page_category').show();
-        $('#menu_state_page_single').hide();
-        $('input[name=state_menu_category]').prop('checked', true);
-        $('select[name=category_id]').children("option").removeAttr('selected');
-        $('select[name=category_id]').children("option[value=" + data['content_id'] + "]").attr('selected', 'selected');
-    }
-}
-function resetForm() {
-    $('input[name=state]').val('insert');
-    $('form#frmCreateThuNghiem').attr('action', getBaseURL() + "sml_admin/menu-create");
-    $('input[name=_method]').val('POST');
-    $('input[name=name]').val('');
-    $('.test_info_right h3.title').html('Tạo Mới Menu');
-    $('input[name=parentId]').val('');
-    $('input[name=mainId]').val('');
-    $('input[name=level]').val('');
-    $('input[name=order]').val('');
-    $('#menu_state_page_category').hide();
-    $('#menu_state_page_single').show();
-    $('input[name=menu_is_active]').prop('checked', false);
-    $('input[name=state_menu_category]').prop('checked', false);
-    $('select[name=page_id]').children("option").removeAttr('selected');
-    $('select[name=page_id]').children("option[value=0]").attr('selected', 'selected');
-    $('select[name=category_id]').children("option").removeAttr('selected');
-    $('select[name=category_id]').children("option").first().attr('selected', 'selected');
-}
-function loadTreeMenu() {
-    $.ajax({
-        type: "GET",
-        url: getBaseURL() + "sml_admin/load-tree",
-        dataType: 'json',
-        success: function (data) {
-            var runTree = $('#tree').tree({
-                uiLibrary: 'bootstrap4',
-                dataSource: data,
-                primaryKey: 'id',
-                dragAndDrop: true
-                // imageUrlField: 'flagUrl'
-            });
-            runTree.bind('select', {key: data}, function (e, node, id) {
-                $.ajax({
-                    type: "GET",
-                    url: getBaseURL() + "sml_admin/find/" + id,
-                    dataType: 'json',
-                    success: function (data2) {
-                        loadDataFormWhenSelectTreeMenu(data2)
-                    }
-                });
-            });
-            runTree.on('nodeDrop', function (e, id, parentId, orderNumber) {
-                console.log(orderNumber);
-                if (parentId == null)
-                    parentId = 0;
-                $.ajax({
-                    type: "GET",
-                    url: getBaseURL() + "sml_admin/updateNodeFamily/" + id + "/" + parentId,
-                    dataType: 'json',
-                    success: function (data2) {
-                        // loadDataFormWhenSelectTreeMenu(data2)
-                    }
-                });
-            });
-        },
-        error: function (data) {
-            // alert(data);
-        }
-    });
-}
-loadTreeMenu();
-if ($('#select_state_menu_category').is(':checked')) {
-    $('#menu_state_page_category').show();
-    $('#menu_state_page_single').hide();
-}
-else {
-    $('#menu_state_page_category').hide();
-    $('#menu_state_page_single').show();
-}
-$('#select_state_menu_category').change(function () {
-    if ($('#select_state_menu_category').is(':checked')) {
-        $('#menu_state_page_category').show();
-        $('#menu_state_page_single').hide();
-    }
-    else {
-        $('#menu_state_page_category').hide();
-        $('#menu_state_page_single').show();
-    }
-});
-
-
-$('#test_info_state_menu').change(function () {
-    switch ($(this).val()) {
-        case '1':
-            $('#menu_state_page').show();
-            break;
-        case '2':
-            $('#menu_state_page').hide();
-            break;
-    }
-});
-$('#sumbitFormThuNghiem').click(function () {
-    $('#frmCreateThuNghiem').submit();
-});
-$('button#addMoreMenu').click(function () {
-    $('button#deleteMenu').hide();
-    resetForm();
-});
-$('button#addSubMenu').click(function () {
-    $('button#deleteMenu').hide();
-    var id = $('input[name=mainId]').val();
-    var name = $('input[name=name]').val();
-    var level = $('input[name=level]').val();
-    resetForm();
-    $('.test_info_right h3.title').html('Thêm Menu Con Cho: ' + name)
-    $('input[name=parentId]').val(id);
-    $('input[name=level]').val(level);
-
-});
-
-$('button#deleteMenu').click(function () {
-    var id = $('input[name=mainId]').val();
-    $('form#frmCreateThuNghiem').attr('action', getBaseURL() + "sml_admin/menu-delete/" + id);
-    $('input[name=_method]').val('Delete');
-    $('#frmCreateThuNghiem').submit();
-});
-
-
-$('#btnBrowseMore').click(function () {
-    window.KCFinder = {
-        callBackMultiple: function (files) {
-            window.KCFinder = null;
-            var listImage = "";
-            // textarea.value = "";
-            for (var i = 0; i < files.length; i++)
-                listImage += "<div class='col-md-3 text-center one-image'>" +
-                    "<img src='" + files[i] + "' id='showHinh' class='image-choose' alt='' style=''>" +
-                    "<input type='hidden' name='image-choose[]' value='" + files[i] + "'>" +
-                    "<span data='" + i + "' class='remove-image'>X</span>" +
-                    "</div>"
-
-
-            $('#add-image').append(listImage);
-            $('.remove-image').click(function () {
-                $(this).parent().remove();
-            });
-        }
-    };
-    window.open('http://localhost:8080/bdsbe/js/kcfinder/browse.php?type=images',
-        'kcfinder_multiple', 'status=0, toolbar=0, location=0, menubar=0, ' +
-        'directories=0, resizable=1, scrollbars=0, width=800, height=600'
-    );
-});
-
-
-if ($('#btnBrowseImageMobile').length) {
-    var button1 = document.getElementById('btnBrowseImageMobile');
-    button1.onclick = function () {
-        selectFileWithKCFinder('pathImageMobile','showHinhMobile');
-    }
-}
+function getBaseURL(){var e=location.href,t=e.substring(0,e.indexOf("/",14));if(-1!=t.indexOf("http://localhost")){var e=location.href,n=location.pathname,a=e.indexOf(n),i=e.indexOf("/",a+1);return e.substr(0,i)+"/"}return t+"/"}function selectFileWithKCFinder(e,t){window.KCFinder={callBack:function(n){document.getElementById(e).value=n,$("#"+t).show(),$("#"+t).fadeIn("fast").attr("src",n),window.KCFinder=null}},window.open(getBaseURL()+"js/kcfinder/browse.php?type=images","kcfinder_textbox","status=0, toolbar=0, location=0, menubar=0, directories=0, resizable=1, scrollbars=0, width=800, height=600"),""==$("#"+e).val()?$("#"+t).hide():$("#"+t).show()}function integratedCKEDITOR(e,t){if($("#"+e).length){CKEDITOR.replace(e,{height:t,language:"vi",format_tags:"p;h1;h2;h3;pre",filebrowserBrowseUrl:"http://saigonreal365.com/js/kcfinder/browse.php?type=files",filebrowserImageBrowseUrl:"http://saigonreal365.com/js/kcfinder/browse.php?type=images",filebrowserFlashBrowseUrl:"http://saigonreal365.com/js/kcfinder/browse.php?type=flash",filebrowserUploadUrl:"http://saigonreal365.com/js/kcfinder/upload.php?type=files",filebrowserImageUploadUrl:"http://saigonreal365.com/js/kcfinder/upload.php?type=images",filebrowserFlashUploadUrl:"http://saigonreal365.com/js/kcfinder/upload.php?type=flash",extraAllowedContent:"div"}).on("instanceReady",function(){this.dataProcessor.writer.selfClosingEnd=">";var e=CKEDITOR.dtd;for(var t in CKEDITOR.tools.extend({},e.$nonBodyContent,e.$block,e.$listItem,e.$tableContent))this.dataProcessor.writer.setRules(t,{indent:!0,breakBeforeOpen:!0,breakAfterOpen:!0,breakBeforeClose:!0,breakAfterClose:!0})})}}function integrateSearch(e,t){$("#"+e).click(function(){""!=$("#txtSearch").val().trim()&&$("#txtSearch").val().trim().replace(/ +(?= )/g,"")!=$("input[name='hdKeyword']").val()&&$("#"+t).submit()})}function isEmpty(e){return""!==e&&void 0!==e&&e.length>0&&null!==e}function loadDataFormWhenSelectTreeMenu(e){$("input[name=state]").val("edit"),$("form#frmCreateThuNghiem").attr("action",getBaseURL()+"sml_admin/menu-update/"+e.id),$("input[name=_method]").val("PATCH"),$("input[name=name]").val(e.name),$("input[name=parentId]").val(e.parent_id),$("input[name=mainId]").val(e.id),$("input[name=level]").val(e.level),$("input[name=order]").val(e.order),$("button#deleteMenu").show(),$(".test_info_right h3.title").html("Cập Nhật Menu: "+e.name),1===e.isActive?$("input[name=menu_is_active]").prop("checked",!0):$("input[name=menu_is_active]").prop("checked",!1),1===e.type?($("#menu_state_page_category").hide(),$("#menu_state_page_single").show(),$("input[name=state_menu_category]").prop("checked",!1),$("select[name=page_id]").children("option").removeAttr("selected"),$("select[name=page_id]").children("option[value="+e.content_id+"]").attr("selected","selected")):($("#menu_state_page_category").show(),$("#menu_state_page_single").hide(),$("input[name=state_menu_category]").prop("checked",!0),$("select[name=category_id]").children("option").removeAttr("selected"),$("select[name=category_id]").children("option[value="+e.content_id+"]").attr("selected","selected"))}function resetForm(){$("input[name=state]").val("insert"),$("form#frmCreateThuNghiem").attr("action",getBaseURL()+"sml_admin/menu-create"),$("input[name=_method]").val("POST"),$("input[name=name]").val(""),$(".test_info_right h3.title").html("Tạo Mới Menu"),$("input[name=parentId]").val(""),$("input[name=mainId]").val(""),$("input[name=level]").val(""),$("input[name=order]").val(""),$("#menu_state_page_category").hide(),$("#menu_state_page_single").show(),$("input[name=menu_is_active]").prop("checked",!1),$("input[name=state_menu_category]").prop("checked",!1),$("select[name=page_id]").children("option").removeAttr("selected"),$("select[name=page_id]").children("option[value=0]").attr("selected","selected"),$("select[name=category_id]").children("option").removeAttr("selected"),$("select[name=category_id]").children("option").first().attr("selected","selected")}function loadTreeMenu(){$.ajax({type:"GET",url:getBaseURL()+"sml_admin/load-tree",dataType:"json",success:function(e){var t=$("#tree").tree({uiLibrary:"bootstrap4",dataSource:e,primaryKey:"id",dragAndDrop:!0});t.bind("select",{key:e},function(e,t,n){$.ajax({type:"GET",url:getBaseURL()+"sml_admin/find/"+n,dataType:"json",success:function(e){loadDataFormWhenSelectTreeMenu(e)}})}),t.on("nodeDrop",function(e,t,n,a){console.log(a),null==n&&(n=0),$.ajax({type:"GET",url:getBaseURL()+"sml_admin/updateNodeFamily/"+t+"/"+n,dataType:"json",success:function(e){}})})},error:function(e){}})}var token=$('meta[name="csrf-token"]').attr("content");if($(".remove-image").click(function(){$(this).parent().remove()}),integratedCKEDITOR("description-page",height=200),$("#btnBrowseImage").length){var button1=document.getElementById("btnBrowseImage");button1.onclick=function(){selectFileWithKCFinder("pathImage","showHinh")}}if($(".ulti-copy").click(function(){var e=[];$("input[type=checkbox][name=id\\[\\]]").each(function(){$(this).is(":checked")&&e.push($(this).val())}),0!=e.length?($("input[name=listID]").val(e),alert("Đã lưu sản phẩm")):alert("Mời bạn chọn sản phẩm"),console.log(e)}),$(".ulti-paste").click(function(){$("input[name=listID]").val()?$("#formPaste").submit():alert("Bạn chưa Sao Chép Hoặc Chưa chọn sản phẩm")}),integratedCKEDITOR("content-page",height=800),$("#btnBrowseImagePage").length){var button1=document.getElementById("btnBrowseImagePage");button1.onclick=function(){selectFileWithKCFinder("pathImagePage","showHinhPage")}}if(integratedCKEDITOR("description-post",height=200),integratedCKEDITOR("content-post",height=800),$("#btnBrowseImagePost").length){var button1=document.getElementById("btnBrowseImagePost");button1.onclick=function(){selectFileWithKCFinder("pathImagePost","showHinhPost")}}if(loadTreeMenu(),$("#select_state_menu_category").is(":checked")?($("#menu_state_page_category").show(),$("#menu_state_page_single").hide()):($("#menu_state_page_category").hide(),$("#menu_state_page_single").show()),$("#select_state_menu_category").change(function(){$("#select_state_menu_category").is(":checked")?($("#menu_state_page_category").show(),$("#menu_state_page_single").hide()):($("#menu_state_page_category").hide(),$("#menu_state_page_single").show())}),$("#test_info_state_menu").change(function(){switch($(this).val()){case"1":$("#menu_state_page").show();break;case"2":$("#menu_state_page").hide()}}),$("#sumbitFormThuNghiem").click(function(){$("#frmCreateThuNghiem").submit()}),$("button#addMoreMenu").click(function(){$("button#deleteMenu").hide(),resetForm()}),$("button#addSubMenu").click(function(){$("button#deleteMenu").hide();var e=$("input[name=mainId]").val(),t=$("input[name=name]").val(),n=$("input[name=level]").val();resetForm(),$(".test_info_right h3.title").html("Thêm Menu Con Cho: "+t),$("input[name=parentId]").val(e),$("input[name=level]").val(n)}),$("button#deleteMenu").click(function(){var e=$("input[name=mainId]").val();$("form#frmCreateThuNghiem").attr("action",getBaseURL()+"sml_admin/menu-delete/"+e),$("input[name=_method]").val("Delete"),$("#frmCreateThuNghiem").submit()}),$("#btnBrowseMore").click(function(){window.KCFinder={callBackMultiple:function(e){window.KCFinder=null;for(var t="",n=0;n<e.length;n++)t+="<div class='col-md-3 text-center one-image'><img src='"+e[n]+"' id='showHinh' class='image-choose' alt='' style=''><input type='hidden' name='image-choose[]' value='"+e[n]+"'><span data='"+n+"' class='remove-image'>X</span></div>";$("#add-image").append(t),$(".remove-image").click(function(){$(this).parent().remove()})}},window.open("http://localhost:8080/bdsbe/js/kcfinder/browse.php?type=images","kcfinder_multiple","status=0, toolbar=0, location=0, menubar=0, directories=0, resizable=1, scrollbars=0, width=800, height=600")}),integratedCKEDITOR("description-content",height=200),integratedCKEDITOR("description-signatures",height=200),$("#btnBrowseImageMobile").length){var button1=document.getElementById("btnBrowseImageMobile");button1.onclick=function(){selectFileWithKCFinder("pathImageMobile","showHinhMobile")}}

@@ -24,27 +24,7 @@
             $i++;
         @endphp
     @endforeach
-    {{--<div class="mySlides">--}}
-    {{--<div class="numbertext">3 / 6</div>--}}
-    {{--<img src="https://picsum.photos/1920/1200?image=817" alt=""/>--}}
-    {{--</div>--}}
 
-    {{--<div class="mySlides">--}}
-    {{--<div class="numbertext">4 / 6</div>--}}
-    {{--<img src="https://picsum.photos/1920/1200?image=856" alt=""/>--}}
-    {{--</div>--}}
-
-    {{--<div class="mySlides">--}}
-    {{--<div class="numbertext">5 / 6</div>--}}
-    {{--<img src="https://unsplash.it/1920/1200?image=494" alt=""/>--}}
-    {{--</div>--}}
-
-    {{--<div class="mySlides">--}}
-    {{--<div class="numbertext">6 / 6</div>--}}
-    {{--<img src="https://picsum.photos/1920/1200?image=856" alt=""/>--}}
-
-
-    {{--</div>--}}
 
     <!-- Next and previous buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>

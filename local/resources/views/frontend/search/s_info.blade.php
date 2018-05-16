@@ -10,7 +10,7 @@
                         <h3><a href="{{URL::to('danh-muc/'.$item->path)}}">{{$item->name}}</a></h3>
                         <p class="address">{{$item->location}}</p>
                         <div class="card-body">
-                            <span class="description">Proportioned rooms of the original house include a sitting room with fireplace and two bedrooms one with a shower room and fireplace.</span>
+                            <span class="description">{{$item->description}}</span>
                         </div>
                         <div class="card-footer">
                             <div class="more-info">

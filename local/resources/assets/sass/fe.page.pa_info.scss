@@ -1,0 +1,16 @@
+#pa_info {
+  .pa_info_detail {
+    h1.title {
+      font-size: 30px;
+      color: $main-color;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 2px solid $main-color;
+      padding-bottom: 10px;
+    }
+    .description{
+      line-height: 1.5;
+    }
+  }
+}

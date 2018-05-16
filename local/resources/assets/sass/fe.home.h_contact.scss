@@ -1,4 +1,5 @@
 #h_contact {
+  margin-bottom: 20px;
   .lh-top {
     display: table;
     span.lh-span-dash {
@@ -22,6 +23,7 @@
       padding: 0 0.8em;
       color: $main-color;
       text-transform: uppercase;
+      font-weight: bold;
     }
   }
   .lh-red{

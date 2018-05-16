@@ -1,15 +1,15 @@
 <div id="p_detail">
 
     {{--<div class="container">--}}
-        {{--<div class="row mt-3">--}}
-            {{--<div class="col-md-12 ttnav">--}}
-                {{--<ul>--}}
-                    {{--<li><a href="">HOME</a></li>--}}
-                    {{--<li><a href="">BDS HA NOI</a></li>--}}
-                    {{--<li><a href="">NHÀ MẬT TIỀN PHỐ HÀNG BÚN</a></li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+    {{--<div class="row mt-3">--}}
+    {{--<div class="col-md-12 ttnav">--}}
+    {{--<ul>--}}
+    {{--<li><a href="">HOME</a></li>--}}
+    {{--<li><a href="">BDS HA NOI</a></li>--}}
+    {{--<li><a href="">NHÀ MẬT TIỀN PHỐ HÀNG BÚN</a></li>--}}
+    {{--</ul>--}}
+    {{--</div>--}}
+    {{--</div>--}}
     {{--</div>--}}
 
     <div class="col-md-12 text-center bg-dprimary mt-3" id="p_detail_topinfor">
@@ -27,49 +27,20 @@
             <div class="col-md-7">
                 <div class="row">
                     <div class="col-md-12 mb-3">
-                        {{--slider--}}
+                    {{--slider--}}
 
 
-                        <!-- Container for the image gallery -->
+                    <!-- Container for the image gallery -->
 
-                        @include('frontend.product.p_slider')
+                    @include('frontend.product.p_slider')
 
 
-                        <!-- Container for the image gallery -->
+                    <!-- Container for the image gallery -->
                     </div>
 
-
-                    <div class="col-md-12">
-
-                            <div class="tab bg-primary">
-                                <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Thông Tin
-                                </button>
-                                {{--<button class="tablinks" onclick="openCity(event, 'Paris')">Email us</button>--}}
-                                {{--<button class="tablinks" onclick="openCity(event, 'Tokyo')">review</button>--}}
-                            </div>
-
-                            <!-- Tab content -->
-                            <div id="London" class="tabcontent">
-                                <p>{!! $data['product']->content !!}</p>
-                            </div>
-
-                            {{--<div id="Paris" class="tabcontent">--}}
-                                {{--<h2>Email to us for informations--}}
-                                {{--</h2>--}}
-                                {{--<p>London is the capital city of England.</p>--}}
-                            {{--</div>--}}
-
-                            {{--<div id="Tokyo" class="tabcontent">--}}
-                                {{--<h2>Comment connect to facebook--}}
-                                {{--</h2>--}}
-                                {{--<p>London is the capital city of England.</p>--}}
-                            {{--</div>--}}
-
-                    </div>
                 </div>
-
-                {{--end slider--}}
             </div>
+
             <div class="col-md-5">
                 {{--phần social và phaafn titlte của bds ìnott--}}
                 <div class="row pl-3 pr-3">
@@ -79,18 +50,18 @@
                             </td>
                         </tr>
                         {{--<tr>--}}
-                            {{--<td>Social Network</td>--}}
-                            {{--<td class="text-right fabs">--}}
-                                {{--<a href=""><i class="fab fa-facebook-square"></i></a>--}}
-                                {{--<a href=""><i class="fab fa-twitter"></i></a>--}}
-                                {{--<a href=""><i class="fab fa-google-plus-g"></i></a>--}}
-                                {{--<a href=""><i class="fab fa-instagram"></i></a>--}}
-                            {{--</td>--}}
+                        {{--<td>Social Network</td>--}}
+                        {{--<td class="text-right fabs">--}}
+                        {{--<a href=""><i class="fab fa-facebook-square"></i></a>--}}
+                        {{--<a href=""><i class="fab fa-twitter"></i></a>--}}
+                        {{--<a href=""><i class="fab fa-google-plus-g"></i></a>--}}
+                        {{--<a href=""><i class="fab fa-instagram"></i></a>--}}
+                        {{--</td>--}}
 
                         {{--</tr>--}}
                         {{--<tr>--}}
-                            {{--<td>ID</td>--}}
-                            {{--<td class="text-right fabs"><a href="">HNHK0130</a></td>--}}
+                        {{--<td>ID</td>--}}
+                        {{--<td class="text-right fabs"><a href="">HNHK0130</a></td>--}}
 
                         {{--</tr>--}}
                         <tr>
@@ -100,7 +71,8 @@
                         </tr>
                         <tr>
                             <td>Giá</td>
-                            <td class="text-right fabs"><a href="">{{$data['product']->price}} {{$data['product']->unit->name}}</a></td>
+                            <td class="text-right fabs"><a
+                                        href="">{{$data['product']->price}} {{$data['product']->unit->name}}</a></td>
 
                         </tr>
                         <tr>
@@ -109,23 +81,23 @@
 
                         </tr>
                         {{--<tr>--}}
-                            {{--<td>Land Area</td>--}}
-                            {{--<td class="text-right fabs"><a href="">35m2</a></td>--}}
+                        {{--<td>Land Area</td>--}}
+                        {{--<td class="text-right fabs"><a href="">35m2</a></td>--}}
 
                         {{--</tr>--}}
                         {{--<tr>--}}
-                            {{--<td>Area usable</td>--}}
-                            {{--<td class="text-right fabs"><a href="">35m2</a></td>--}}
+                        {{--<td>Area usable</td>--}}
+                        {{--<td class="text-right fabs"><a href="">35m2</a></td>--}}
 
                         {{--</tr>--}}
                         {{--<tr>--}}
-                            {{--<td>Location</td>--}}
-                            {{--<td class="text-right fabs"><a href="">HOAN KIEM DISTRICT</a></td>--}}
+                        {{--<td>Location</td>--}}
+                        {{--<td class="text-right fabs"><a href="">HOAN KIEM DISTRICT</a></td>--}}
 
                         {{--</tr>--}}
                         {{--<tr>--}}
-                            {{--<td>Category</td>--}}
-                            {{--<td class="text-right fabs"><a href="">STUDIO</a></td>--}}
+                        {{--<td>Category</td>--}}
+                        {{--<td class="text-right fabs"><a href="">STUDIO</a></td>--}}
 
                         {{--</tr>--}}
                     </table>
@@ -143,7 +115,7 @@
                                         <i class="fas fa-user-circle"></i>
                                     </td>
                                     <td class="text-left">
-                                        Mr TUNG Celadon City
+                                        {{$data['config-name']}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -151,7 +123,7 @@
                                         <i class="fas fa-envelope-square"></i>
                                     </td>
                                     <td>
-                                        housingagentvn@gmail.com
+                                        {{$data['config-email']}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -159,7 +131,7 @@
                                         <i class="fas fa-phone-square"></i>
                                     </td>
                                     <td>
-                                        098 289 1358
+                                        {{$data['config-phone']}}
                                     </td>
                                 </tr>
                             </table>
@@ -169,6 +141,42 @@
                 </div>
                 {{-- end phần social và phaafn titlte của bds ìnott--}}
             </div>
+
+
+
+
+            <div class="col-md-12">
+
+                <div class="tab bg-primary">
+                    <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Thông Tin
+                    </button>
+                    {{--<button class="tablinks" onclick="openCity(event, 'Paris')">Email us</button>--}}
+                    {{--<button class="tablinks" onclick="openCity(event, 'Tokyo')">review</button>--}}
+                </div>
+
+                <!-- Tab content -->
+                <div id="London" class="tabcontent" style="line-height: 1.5">
+                    <p>{!! $data['product']->content !!}</p>
+                </div>
+
+                {{--<div id="Paris" class="tabcontent">--}}
+                {{--<h2>Email to us for informations--}}
+                {{--</h2>--}}
+                {{--<p>London is the capital city of England.</p>--}}
+                {{--</div>--}}
+
+                {{--<div id="Tokyo" class="tabcontent">--}}
+                {{--<h2>Comment connect to facebook--}}
+                {{--</h2>--}}
+                {{--<p>London is the capital city of England.</p>--}}
+                {{--</div>--}}
+
+            </div>
+
+
+            {{--end slider--}}
+
+
         </div>
 
         <div class="row mt-3">

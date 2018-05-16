@@ -24,6 +24,6 @@ class Product extends Model
     }
     public function unit()
     {
-        return $this->belongsTo('App\unit', 'unit_id');
+        return $this->belongsTo('App\Unit', 'unit_id');
     }
 }

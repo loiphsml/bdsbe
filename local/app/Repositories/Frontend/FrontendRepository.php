@@ -6,7 +6,9 @@ namespace App\Repositories\Frontend;
 //use App\CategoryItem;
 //use App\Config;
 //use App\Post;
+use App\Config;
 use App\Location;
+use App\Post;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -210,7 +212,9 @@ class FrontendRepository implements FrontendRepositoryInterface
             }
             $item->location = $location;
         }
+        $configContact=Config::where('name','config-contact')->first();
         $data['products'] = $products;
+        $data['configContact']=$configContact;
         return $data;
     }
 
@@ -284,6 +288,7 @@ class FrontendRepository implements FrontendRepositoryInterface
                 $location = $location . ', ' . Location::where('id', $item->location->parent_id)->first()->name;
             }
 
+            $item->description=loai_bo_html_tag($item->description);
             $item->location = $location;
         }
         $data['products'] = $products;
@@ -310,12 +315,44 @@ class FrontendRepository implements FrontendRepositoryInterface
         }
         $product->finalLocation = $location;
         $product->description = loai_bo_html_tag($product->description);
-        $otherProduct = Product::where('id','!=', $product->id)->take(6)->get();
+        $otherProduct = Product::where('id', '!=', $product->id)->take(6)->get();
         foreach ($otherProduct as $key => $item) {
             $item->description = loai_bo_html_tag($item->description);
         }
+        $contact=Config::whereIn('name',['config-email','config-phone','config-name'])->get();
+        foreach ($contact as $key => $item) {
+            if ($item->name == 'config-phone')
+                $data['config-phone'] = $item->content;
+            if ($item->name == 'config-email')
+                $data['config-email'] = $item->content;
+            if ($item->name == 'config-name')
+                $data['config-name'] = $item->content;
+        }
         $data['product'] = $product;
         $data['otherProduct'] = $otherProduct;
+        return $data;
+    }
+
+    public function getPageContent($path)
+    {
+        $data = [];
+        $page = Post::where('path', $path)->first();
+        $data['page'] = $page;
+        return $data;
+    }
+
+    public function getDataConfig()
+    {
+        $data = [];
+        $configs = Config::whereIn('name', ['config-phone', 'config-email','config-address'])->orderBy('order')->get();
+        foreach ($configs as $key => $item) {
+            if ($item->name == 'config-phone')
+                $data['config-phone'] = $item->content;
+            if ($item->name == 'config-email')
+                $data['config-email'] = $item->content;
+            if ($item->name == 'config-address')
+                $data['config-address'] = $item->content;
+        }
         return $data;
     }
 

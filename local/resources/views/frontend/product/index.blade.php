@@ -1,9 +1,12 @@
 @extends('frontend.master')
 @section('title')
-    Nội Thất
+    {{$data['product']->seo_title}}
 @stop
 @section('description')
-    Nội Thất
+    {{$data['product']->seo_description}}
+@stop
+@section('keyword')
+    {{$data['product']->seo_keywords}}
 @stop
 
 @section('container')

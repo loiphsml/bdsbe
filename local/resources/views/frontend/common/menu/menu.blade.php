@@ -2,19 +2,19 @@
     <div class="container">
         <div id="menu-top">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-5">
                     <div class="row">
-                        <div class="col-4 text-right p-0"><i class="fab fa-css3-alt text-primary"></i></div>
+                        <div class="col-4 text-right p-0"></div>
                         <div class="col-8 justify-content-center p-0 align-self-center text-left">
-                            <span class="slogan"><b>Apartment</b></span>
+                            <span class="slogan"><b>SÀI GÒN REAL 365</b></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 text-right justify-content-center p-0 align-self-center">
+                <div class="col-md-7 text-right justify-content-center p-0 align-self-center">
                     <ul>
                         <li><i class="fas pr-2 fa-envelope text-primary"></i><span
-                                    class="inf">H3-Arpatment@gmai.com</span>
-                        <li><i class="fas pr-2 fa-phone text-primary"></i><span class="inf">0909 123 123</span></li>
+                                    class="inf">{{$dataConfig['config-email']}}</span>
+                        <li><i class="fas pr-2 fa-phone text-primary"></i><span class="inf">{{$dataConfig['config-phone']}}</span></li>
                         </li>
                     </ul>
                 </div>
@@ -25,17 +25,17 @@
         <div class="container">
             <ul class="main-menu">
                 <li class="li-normal"><a href="{{URL::to('/')}}">Trang Chủ</a></li>
-                <li class="li-normal"><a href="">Giới Thiệu</a></li>
-                <li class="li-has-item-down"><a href="">Menu 2</a>
-                    <ul class="sub-menu">
-                        <li class="li-normal"><a href="">Sub Menu 1</a></li>
-                        <li class="li-normal"><a href="">Sub Menu 2</a></li>
-                        <li class="li-normal"><a href="">Sub Menu 3</a></li>
-                        <li class="li-normal"><a href="">Sub Menu 4</a></li>
+                <li class="li-normal"><a href="{{URL::to('/trang/gioi-thieu')}}">Giới Thiệu</a></li>
+                {{--<li class="li-has-item-down"><a href="">Menu 2</a>--}}
+                    {{--<ul class="sub-menu">--}}
+                        {{--<li class="li-normal"><a href="">Sub Menu 1</a></li>--}}
+                        {{--<li class="li-normal"><a href="">Sub Menu 2</a></li>--}}
+                        {{--<li class="li-normal"><a href="">Sub Menu 3</a></li>--}}
+                        {{--<li class="li-normal"><a href="">Sub Menu 4</a></li>--}}
 
-                    </ul>
-                </li>
-                <li class="li-normal"><a href="">Liên Hệ</a></li>
+                    {{--</ul>--}}
+                {{--</li>--}}
+                <li class="li-normal"><a href="{{URL::to('/trang/lien-he')}}">Liên Hệ</a></li>
             </ul>
         </div>
     </div>

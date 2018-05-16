@@ -43,4 +43,8 @@ interface FrontendRepositoryInterface
 
     public function getDetailProduct($path);
 
+    public function getPageContent($path);
+
+    public function getDataConfig();
+
 }

@@ -40,6 +40,11 @@ class FrontendController extends Controller
         $data = $this->frontendRepository->getDetailProduct($path);
         return view('frontend.product.index', compact('data'));
     }
+    public function getPageContent($path)
+    {
+        $data = $this->frontendRepository->getPageContent($path);
+        return view('frontend.page.index', compact('data'));
+    }
 
 //    public function getProductByCategoryMain($path)
 //    {

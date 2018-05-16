@@ -18,6 +18,7 @@ class FrontendServiceProvider extends ServiceProvider
             'frontend.search.index'
         ], 'App\Http\ViewComposers\SearchComposer');
         view()->composer('*', 'App\Http\ViewComposers\FrontendComposer');
+        view()->composer('*', 'App\Http\ViewComposers\ConfigComposer');
     }
 
     /**

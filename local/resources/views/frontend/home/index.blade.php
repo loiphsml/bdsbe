@@ -1,9 +1,9 @@
 @extends('frontend.master')
 @section('title')
-    Nội Thất
+    SÀI GÒN REAL 365
 @stop
 @section('description')
-    Nội Thất
+    SÀI GÒN REAL 365
 @stop
 @section('styles')
     {{ Html::style('css/themes/default/default.css') }}

@@ -15,9 +15,9 @@
                         </div>
                         <div class="info card-footer">
                             <ul class="info-top">
-                                <li><i class="fas fa-expand"></i> {{$item->area}}</li>
+                                <li><i class="fas fa-expand"></i> {{$item->area}} m2</li>
                                 @if($item->price!==0)
-                                    <li><i class="fas fa-dollar-sign"></i><span>{{$item->price}}</span></li>
+                                    <li><i class="fas fa-dollar-sign"></i><span>{{$item->price}}{{$item->unit->name}}</span></li>
                                 @else
                                     <li><i class="fas fa-dollar-sign"></i><span>Liên Hệ</span></li>
                                 @endif
