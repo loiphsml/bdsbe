@@ -47,4 +47,6 @@ interface FrontendRepositoryInterface
 
     public function getDataConfig();
 
+    public function getFrontEndInfo();
+
 }

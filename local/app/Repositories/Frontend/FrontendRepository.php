@@ -212,9 +212,9 @@ class FrontendRepository implements FrontendRepositoryInterface
             }
             $item->location = $location;
         }
-        $configContact=Config::where('name','config-contact')->first();
+        $configContact = Config::where('name', 'config-contact')->first();
         $data['products'] = $products;
-        $data['configContact']=$configContact;
+        $data['configContact'] = $configContact;
         return $data;
     }
 
@@ -288,7 +288,7 @@ class FrontendRepository implements FrontendRepositoryInterface
                 $location = $location . ', ' . Location::where('id', $item->location->parent_id)->first()->name;
             }
 
-            $item->description=loai_bo_html_tag($item->description);
+            $item->description = loai_bo_html_tag($item->description);
             $item->location = $location;
         }
         $data['products'] = $products;
@@ -319,7 +319,7 @@ class FrontendRepository implements FrontendRepositoryInterface
         foreach ($otherProduct as $key => $item) {
             $item->description = loai_bo_html_tag($item->description);
         }
-        $contact=Config::whereIn('name',['config-email','config-phone','config-name'])->get();
+        $contact = Config::whereIn('name', ['config-email', 'config-phone', 'config-name'])->get();
         foreach ($contact as $key => $item) {
             if ($item->name == 'config-phone')
                 $data['config-phone'] = $item->content;
@@ -344,7 +344,7 @@ class FrontendRepository implements FrontendRepositoryInterface
     public function getDataConfig()
     {
         $data = [];
-        $configs = Config::whereIn('name', ['config-phone', 'config-email','config-address'])->orderBy('order')->get();
+        $configs = Config::whereIn('name', ['config-phone', 'config-email', 'config-address'])->orderBy('order')->get();
         foreach ($configs as $key => $item) {
             if ($item->name == 'config-phone')
                 $data['config-phone'] = $item->content;
@@ -353,6 +353,14 @@ class FrontendRepository implements FrontendRepositoryInterface
             if ($item->name == 'config-address')
                 $data['config-address'] = $item->content;
         }
+        return $data;
+    }
+
+    public function getFrontEndInfo()
+    {
+        $data = [];
+        $products = Product::select('name', 'path')->orderBy('id', 'DESC')->get();
+        $data['products'] = $products;
         return $data;
     }
 

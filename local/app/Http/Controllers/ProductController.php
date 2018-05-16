@@ -75,6 +75,10 @@ class ProductController extends Controller
         $name = $request->input('name');
         $description = $request->input('description');
         $content = $request->input('content');
+        $pPosition=$request->input('p_position');
+        $pUtility=$request->input('p_utility');
+        $pDesign=$request->input('p_design');
+        $pGround=$request->input('p_ground');
         $order = $request->input('order');
         $isActive = $request->input('is_active');
         $categoryProductID = $request->input('category_product');
@@ -124,6 +128,10 @@ class ProductController extends Controller
         $product->path = chuyen_chuoi_thanh_path($name);
         $product->image = $image;
         $product->content = $content;
+        $product->p_position = $pPosition;
+        $product->p_utility = $pUtility;
+        $product->p_design = $pDesign;
+        $product->p_ground = $pGround;
         $product->category_product_id = $categoryProductID;
         $product->location_id = $locationID;
         $product->unit_id = $unitID;
@@ -209,6 +217,10 @@ class ProductController extends Controller
         $name = $request->input('name');
         $description = $request->input('description');
         $content = $request->input('content');
+        $pPosition=$request->input('p_position');
+        $pUtility=$request->input('p_utility');
+        $pDesign=$request->input('p_design');
+        $pGround=$request->input('p_ground');
         $order = $request->input('order');
         $isActive = $request->input('is_active');
         $categoryProductID = $request->input('category_product');
@@ -264,6 +276,10 @@ class ProductController extends Controller
         $product->path = chuyen_chuoi_thanh_path($name);
         $product->image = $image;
         $product->content = $content;
+        $product->p_position = $pPosition;
+        $product->p_utility = $pUtility;
+        $product->p_design = $pDesign;
+        $product->p_ground = $pGround;
         $product->category_product_id = $categoryProductID;
         $product->location_id = $locationID;
         $product->unit_id = $unitID;

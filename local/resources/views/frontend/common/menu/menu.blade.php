@@ -26,15 +26,13 @@
             <ul class="main-menu">
                 <li class="li-normal"><a href="{{URL::to('/')}}">Trang Chủ</a></li>
                 <li class="li-normal"><a href="{{URL::to('/trang/gioi-thieu')}}">Giới Thiệu</a></li>
-                {{--<li class="li-has-item-down"><a href="">Menu 2</a>--}}
-                    {{--<ul class="sub-menu">--}}
-                        {{--<li class="li-normal"><a href="">Sub Menu 1</a></li>--}}
-                        {{--<li class="li-normal"><a href="">Sub Menu 2</a></li>--}}
-                        {{--<li class="li-normal"><a href="">Sub Menu 3</a></li>--}}
-                        {{--<li class="li-normal"><a href="">Sub Menu 4</a></li>--}}
-
-                    {{--</ul>--}}
-                {{--</li>--}}
+                <li class="li-has-item-down"><a href="">Dự Án</a>
+                    <ul class="sub-menu">
+                        @foreach($listFrontEndInfo['products'] as $key=>$data)
+                        <li class="li-normal"><a href="{{URL::to('danh-muc/'.$data->path)}}">{{$data->name}}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
                 <li class="li-normal"><a href="{{URL::to('/trang/lien-he')}}">Liên Hệ</a></li>
             </ul>
         </div>

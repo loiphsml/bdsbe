@@ -1,4 +1,5 @@
 integratedCKEDITOR('description-page',height=200);
+integratedCKEDITOR('content-page',height=800);
 // integratedCKEDITOR('seo-description',height=200);
 if ($('#btnBrowseImage').length) {
     var button1 = document.getElementById('btnBrowseImage');

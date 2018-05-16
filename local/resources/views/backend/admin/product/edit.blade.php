@@ -117,9 +117,24 @@
             </div>
         </div>
         <div class="col-md-12 p-0">
-            <strong>Mô Tả Sản Phẩm:</strong>
+            <strong>Mô Tả Bất Động Sản:</strong>
             {!! Form::textarea('content',null,array('placeholder' => '','id'=>'content-page','class' => 'form-control','rows'=>'10','style'=>'resize:none')) !!}
-
+        </div>
+        <div class="col-md-12 p-0">
+            <strong>Vị Trí:</strong>
+            {!! Form::textarea('p_position',null,array('placeholder' => '','id'=>'content-position','class' => 'form-control','rows'=>'10','style'=>'resize:none')) !!}
+        </div>
+        <div class="col-md-12 p-0">
+            <strong>Tiện Ích:</strong>
+            {!! Form::textarea('p_utility',null,array('placeholder' => '','id'=>'content-utility','class' => 'form-control','rows'=>'10','style'=>'resize:none')) !!}
+        </div>
+        <div class="col-md-12 p-0">
+            <strong>Thiết Kế:</strong>
+            {!! Form::textarea('p_design',null,array('placeholder' => '','id'=>'content-design','class' => 'form-control','rows'=>'10','style'=>'resize:none')) !!}
+        </div>
+        <div class="col-md-12 p-0">
+            <strong>Mặt Bằng:</strong>
+            {!! Form::textarea('p_ground',null,array('placeholder' => '','id'=>'content-ground','class' => 'form-control','rows'=>'10','style'=>'resize:none')) !!}
         </div>
         <hr>
 

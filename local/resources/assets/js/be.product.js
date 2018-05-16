@@ -1,3 +1,7 @@
+integratedCKEDITOR('content-position',height=400);
+integratedCKEDITOR('content-utility',height=400);
+integratedCKEDITOR('content-design',height=400);
+integratedCKEDITOR('content-ground',height=400);
 $('#btnBrowseMore').click(function () {
     window.KCFinder = {
         callBackMultiple: function (files) {

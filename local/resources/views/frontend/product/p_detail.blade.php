@@ -148,15 +148,29 @@
             <div class="col-md-12">
 
                 <div class="tab bg-primary">
-                    <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Thông Tin
+                    <button class="tablinks" onclick="openCity(event, 'content-info')" id="defaultOpen">Thông Tin
                     </button>
-                    {{--<button class="tablinks" onclick="openCity(event, 'Paris')">Email us</button>--}}
-                    {{--<button class="tablinks" onclick="openCity(event, 'Tokyo')">review</button>--}}
+                    <button class="tablinks" onclick="openCity(event, 'content-position')">Vị Trí</button>
+                    <button class="tablinks" onclick="openCity(event, 'content-design')">Thiết Kế</button>
+                    <button class="tablinks" onclick="openCity(event, 'content-utility')">Tiện Ích</button>
+                    <button class="tablinks" onclick="openCity(event, 'content-ground')">Mặt Bằng</button>
                 </div>
 
                 <!-- Tab content -->
-                <div id="London" class="tabcontent" style="line-height: 1.5">
+                <div id="content-info" class="tabcontent" style="line-height: 1.5">
                     <p>{!! $data['product']->content !!}</p>
+                </div>
+                <div id="content-position" class="tabcontent" style="line-height: 1.5">
+                    <p>{!! $data['product']->p_position !!}</p>
+                </div>
+                <div id="content-design" class="tabcontent" style="line-height: 1.5">
+                    <p>{!! $data['product']->p_design !!}</p>
+                </div>
+                <div id="content-utility" class="tabcontent" style="line-height: 1.5">
+                    <p>{!! $data['product']->p_utility !!}</p>
+                </div>
+                <div id="content-ground" class="tabcontent" style="line-height: 1.5">
+                    <p>{!! $data['product']->p_ground !!}</p>
                 </div>
 
                 {{--<div id="Paris" class="tabcontent">--}}
