@@ -22,5 +22,7 @@
 @stop
 @section('container')
     @include('frontend.home.h_product')
-    @include('frontend.home.h_contact')
+    @include('frontend.home.h_loicontact')
+    {{--@include('frontend.home.h_contact')--}}
+
 @stop
