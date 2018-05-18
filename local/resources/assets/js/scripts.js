@@ -38,6 +38,7 @@ $(document).ready(function () {
         var data = new FormData($(this).get(0));
         data.append('name', $("input[name='name-ct']").val());
         data.append('email', $("input[name='email-ct']").val());
+        data.append('phone', $("input[name='phone-ct']").val());
         data.append('contentMail', $("textarea[name='contentMail']").val());
         $.ajaxSetup({
             headers: {

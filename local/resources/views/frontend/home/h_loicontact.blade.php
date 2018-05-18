@@ -91,7 +91,7 @@
             <div class="wid3"></div>
             <div class="wid2"></div>
           <p id="h_contact_title" class="p-2">
-              CONTACT WITH US
+              Liên Hệ Với Chúng Tôi
           </p>
         </div>
 

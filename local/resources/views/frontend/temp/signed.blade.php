@@ -3,16 +3,15 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="contact_top">
-                    <h3 class="title">Gửi liên hệ</h3>
+                    <h3 class="title">Ký Gửi Bán Lại Dự Án</h3>
                     <hr>
                     <p>
-                        Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn
-                        sớm nhất có thể .
+                        Quý khách có nhu cầu ký gửi bất động sản, mong muốn được tư vấn bởi đội ngũ chuyên nghiệp, tận tình. Vui lòng điền thông tin dưới đây. Chúng tôi, sẽ liên hệ lại ngay với quý khách. Xin cảm ơn!
                     </p>
                 </div>
                 <div class="contact_bottom">
                     <div class="ip-name input-group">
-                        <input class="form-control input-text" placeholder="Tên Của Bạn" name="name-ct" type="text"
+                        <input class="form-control input-text" placeholder="Họ Tên Quý Khách" name="name-ct" type="text"
                                value="">
                         <div class="invalid-feedback">
                             Please choose a username.
@@ -31,14 +30,14 @@
                         </div>
                     </div>
                     <div class="ip-contentMail input-group">
-                    <textarea class="form-control input-area" placeholder="Viết Nội Dung" name="contentMail" cols="30"
+                    <textarea class="form-control input-area" placeholder="Thông Tin Ký Gửi Dự Án" name="contentMail" cols="30"
                               rows="5"></textarea>
                         <div class="invalid-feedback">
                             Please choose a Email.
                         </div>
                     </div>
                     <div class="button-group">
-                        <button id="btnSendMail" type="button" class="btn btn-contact">Gửi Liên Hệ<i
+                        <button id="btnSendMail" type="button" class="btn btn-contact">Gửi Thông Tin<i
                                     class="fa fa-spinner fa-spin fa-3x fa-fw loadingSending" style="
     font-size: 15px;display: none"></i><i
                                     class="fa fa-check-circle successSending" style="display: none"

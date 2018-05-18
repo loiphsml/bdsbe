@@ -4,10 +4,12 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="row">
-                        <div class="col-4 text-right p-0"></div>
-                        <div class="col-8 justify-content-center p-0 align-self-center text-left">
-                            <span class="slogan"><b>SÀI GÒN REAL 365</b></span>
+                        <div class="col-8 text-right p-0">
+                            {{ Html::image('images/logo/logo_head.png','',array('class'=>'img-logo')) }}
                         </div>
+                        {{--<div class="col-8 justify-content-center p-0 align-self-center text-left">--}}
+                            {{--<span class="slogan"><b></b></span>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
                 <div class="col-md-7 text-right justify-content-center p-0 align-self-center">
@@ -33,6 +35,7 @@
                         @endforeach
                     </ul>
                 </li>
+                <li class="li-normal"><a href="{{URL::to('/trang/ky-gui')}}">Ký Gửi Dự Án</a></li>
                 <li class="li-normal"><a href="{{URL::to('/trang/lien-he')}}">Liên Hệ</a></li>
             </ul>
         </div>
