@@ -299,7 +299,7 @@ class FrontendRepository implements FrontendRepositoryInterface
     {
         $data = [];
         $id = $request['id'];
-        $districts = Location::where('parent_id', $id)->get();
+        $districts = Location::where('parent_id', $id)->orderBy('order')->get();
         $data['success'] = 'success';
         $data['districts'] = $districts;
         return $data;
