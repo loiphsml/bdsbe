@@ -105,7 +105,8 @@
 
                 <div class="row mt-3 text-left">
                     <div class="col-md-3 justify-content-center align-self-center float-left">
-                        <img src="https://unsplash.it/1920/1200?image=494" alt="" id="p_Detail_img_avatar"/>
+                        {{ Html::image($data['config-img-personal'],'',array('id'=>'p_Detail_img_avatar')) }}
+                        {{--<img src="{{$data['config-img-personal']}}" alt="" id="p_Detail_img_avatar"/>--}}
                     </div>
                     <div class="col-md-9">
                         <div class="float-left justify-content-center align-self-center" style="width: 100%">

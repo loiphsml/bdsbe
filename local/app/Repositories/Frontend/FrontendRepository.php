@@ -319,7 +319,7 @@ class FrontendRepository implements FrontendRepositoryInterface
         foreach ($otherProduct as $key => $item) {
             $item->description = loai_bo_html_tag($item->description);
         }
-        $contact = Config::whereIn('name', ['config-email', 'config-phone', 'config-name'])->get();
+        $contact = Config::whereIn('name', ['config-email', 'config-phone', 'config-name','config-img-personal'])->get();
         foreach ($contact as $key => $item) {
             if ($item->name == 'config-phone')
                 $data['config-phone'] = $item->content;
@@ -327,6 +327,8 @@ class FrontendRepository implements FrontendRepositoryInterface
                 $data['config-email'] = $item->content;
             if ($item->name == 'config-name')
                 $data['config-name'] = $item->content;
+            if ($item->name == 'config-img-personal')
+                $data['config-img-personal'] = $item->content;
         }
         $data['product'] = $product;
         $data['otherProduct'] = $otherProduct;
