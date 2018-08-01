@@ -72,6 +72,20 @@
                 </div>
             </div>
         @endif
+        @if($cauhinh->name=='config-img-personal')
+            <div class=" col-md-12">
+                <div class="form-group">
+                    <strong>Hình Đại Diện: </strong>
+                    {!! Form::text('config-img-personal', $cauhinh->content, array('class' => 'form-control','id'=>'pathImagePost')) !!}
+                    {{ Form::hidden('hd-config-img-personal', $cauhinh->content) }}
+                    <br>
+                    {!! Form::button('Tìm', array('id' => 'btnBrowseImagePost','class'=>'btn btn-primary')) !!}
+                </div>
+                <div class="form-group">
+                    {{ Html::image($cauhinh->content,'',array('id'=>'showHinhPost','class'=>'show-image'))}}
+                </div>
+            </div>
+        @endif
     @endforeach
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button id="btnDanhMuc" type="submit" class="btn btn-primary">Lưu Cấu Hình</button>
