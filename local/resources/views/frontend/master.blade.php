@@ -9,6 +9,12 @@
     <meta name="keywords" content="@yield('keyword')">
     <meta name="description" content="@yield('description')">
     <meta name="viewport" content="width=device-width">
+    <meta property="og:image" content="@yield('og-image')" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="@yield('title')"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:locale" content="vi_VN"/>
+    <meta property="og:url" content="{{url()->current()}}"/>
     {{ Html::style('css/core.common.css') }}
     {{ Html::style('css/core.frontend.css') }}
     {{ Html::style('css/frontend.css') }}
@@ -57,7 +63,8 @@
     </div>
 </div>
 <div class="mess_desk_bot d-none d-md-block" style="position: fixed;bottom:40px;right: 0px;">
-    <a href="tel:0909345117" style="display: block;width: 260px;height: 56px;background: url({{URL::to('images/nenhot.png')}}) no-repeat;text-align: center;padding-top: 10px;color:#fff;font-size: 20px;font-family: 'roboto-bold'">
+    <a href="tel:0909345117"
+       style="display: block;width: 260px;height: 56px;background: url({{URL::to('images/nenhot.png')}}) no-repeat;text-align: center;padding-top: 10px;color:#fff;font-size: 20px;font-family: 'roboto-bold'">
     </a>
 </div>
 

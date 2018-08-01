@@ -172,19 +172,6 @@
                 <div id="content-ground" class="tabcontent" style="line-height: 1.5">
                     <p>{!! $data['product']->p_ground !!}</p>
                 </div>
-
-                {{--<div id="Paris" class="tabcontent">--}}
-                {{--<h2>Email to us for informations--}}
-                {{--</h2>--}}
-                {{--<p>London is the capital city of England.</p>--}}
-                {{--</div>--}}
-
-                {{--<div id="Tokyo" class="tabcontent">--}}
-                {{--<h2>Comment connect to facebook--}}
-                {{--</h2>--}}
-                {{--<p>London is the capital city of England.</p>--}}
-                {{--</div>--}}
-
             </div>
 
 
