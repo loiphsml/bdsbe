@@ -38,7 +38,7 @@ class FrontendController extends Controller
     public function getDetailProduct($path)
     {
         $data = $this->frontendRepository->getDetailProduct($path);
-        return view('frontend.product.index', compact('data'));
+        return view('frontend.getDistrict.index', compact('data'));
     }
     public function getPageContent($path)
     {
