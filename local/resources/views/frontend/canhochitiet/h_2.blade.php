@@ -5,11 +5,11 @@
 <div class="container-fluid" id="h_2">
     <div class="row p-2">
         <div class="col-12 text-left nav-title">
-            <ul>
-                <li><a href=""><i class="far fa-building"></i></i> HOME</a></li>
-                <li><a href="">HO CHI MINH</a></li>
-                <li><a href="">DISTRICT 2</a></li>
-            </ul>
+            {{--<ul>--}}
+                {{--<li><a href=""><i class="far fa-building"></i></i> HOME</a></li>--}}
+                {{--<li><a href="">HO CHI MINH</a></li>--}}
+                {{--<li><a href="">DISTRICT 2</a></li>--}}
+            {{--</ul>--}}
         </div>
     </div>
 
@@ -19,20 +19,20 @@
             <div id="nav">
                 <ul>
                     <li><a class="nav-r active" id="h_top_nav" href="#p_1">
-                            <p>Description</p>
+                            <p>Thông Tin</p>
                         </a>
                     </li>
                     <li><a class="nav-r" id="h_1_nav" href="#p_2">
-                            <p>Overview</p>
+                            <p>Vị Trí</p>
                         </a></li>
                     <li><a class="nav-r" id="h_2_nav" href="#p_3">
-                            <p>Facilities</p>
+                            <p>Thiết Kế</p>
                         </a></li>
                     <li><a class="nav-r" id="h_3_nav" href="#p_4">
-                            <p>Location</p>
+                            <p>Tiện Ích</p>
                         </a></li>
                     <li><a class="nav-r" id="h_4_nav" href="#h_4">
-                            <p>Listing</p>
+                            <p>Mặt Bằng</p>
                         </a></li>
                 </ul>
             </div>
@@ -47,8 +47,7 @@
         </div>
 
         <div class="col-12 d-flex justify-content-between">
-            <a href="" class=""><p class="text-left"><i class="fas fa-map-marker-alt pr-2"></i> Binh Thanh District, Ho
-                    Chi Minh</p></a>
+            <a href="" class=""><p class="text-left"><i class="fas fa-map-marker-alt pr-2"></i> {{$data['product']->finalLocation}}</p></a>
             {{--@if(!is_null($data['product']->code))--}}
                 <div class="r-housecode">
                     <div class="inner">

@@ -15,7 +15,7 @@
 @section('container')
     {{--@include('frontend.home.h_product')--}}
     @include('frontend.danhsachcanho.h_2')
-    @include('frontend.danhsachcanho.h_3')
+    {{--@include('frontend.danhsachcanho.h_3')--}}
     @include('frontend.common.map')
     {{--@include('frontend.home.h_contact')--}}
 @stop

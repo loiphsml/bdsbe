@@ -16,11 +16,11 @@
                                            {{--href="{{URL::to($item->link())}}">@lang($item->title)</a></li>--}}
                                 {{--@endforeach--}}
                                 <li><a class="{{ request()->is('/') ? 'active' : '/' }}" href="{{URL::asset('/')}}">Trang Chủ</a></li>
-                                <li><a class="{{ request()->is('danh-muc-bds*') ? 'active' : '/' }}" href="{{URL::asset('danh-muc-bds')}}">Dự Án</a></li>
-                                <li><a class="{{ request()->is('mua-ban*') ? 'active' : '/' }}" href="{{URL::asset('mua-ban-can-ho')}}">Mua Bán Căn Hộ</a></li>
-                                <li><a class="{{ request()->is('tuyen-dung*') ? 'active' : '/' }}" href="{{URL::asset('tuyen-dung.html')}}">Ký Gởi Dự Án</a></li>
-                                <li><a class="{{ request()->is('tuyen-dung*') ? 'active' : '/' }}" href="{{URL::asset('tuyen-dung.html')}}">Giới Thiệu</a></li>
-                                <li><a class="{{ request()->is('tuyen-dung*') ? 'active' : '/' }}" href="{{URL::asset('tuyen-dung.html')}}">Liên Hệ</a></li>
+                                <li><a class="{{ request()->is('mua-ban-dat-nen*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-dat-nen')}}">Mua Bán Đất Nền</a></li>
+                                <li><a class="{{ request()->is('mua-ban-can-ho*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-can-ho')}}">Mua Bán Căn Hộ</a></li>
+                                <li><a class="{{ request()->is('tuyen-dung*') ? 'active' : '/' }}" href="{{URL::asset('trang/ky-gui')}}">Ký Gởi Dự Án</a></li>
+                                <li><a class="{{ request()->is('tuyen-dung*') ? 'active' : '/' }}" href="{{URL::asset('trang/gioi-thieu')}}">Giới Thiệu</a></li>
+                                <li><a class="{{ request()->is('tuyen-dung*') ? 'active' : '/' }}" href="{{URL::asset('trang/lien-he')}}">Liên Hệ</a></li>
 
 
                             </ul>
