@@ -17,11 +17,13 @@ mix
         'bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css',
         'bower_components/Ionicons/css/ionicons.min.css',
         'bower_components/fancybox/dist/jquery.fancybox.min.css',
+        'bower_components/animate.css/animate.min.css',
     ], '../css/core.common.css')
 
     //JS CORE FRONTEND
     .styles([
         'bower_components/nivo-slider/jquery.nivo.slider.pack.js',
+        'bower_components/owl.carousel/dist/owl.carousel.js',
     ], '../js/core.frontend.js')
     .styles([
         'bower_components/admin-lte/dist/js/adminlte.min.js',
@@ -33,6 +35,8 @@ mix
     //CSS CORE FRONTEND
     .styles([
         'bower_components/nivo-slider/nivo-slider.css',
+        'bower_components/owl.carousel/dist/assets/owl.carousel.css',
+        'bower_components/owl.carousel/dist/assets/owl.theme.default.css',
     ], '../css/core.frontend.css')
     //CSS CORE BACKEND
     .styles([

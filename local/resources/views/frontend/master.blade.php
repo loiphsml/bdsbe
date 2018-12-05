@@ -9,6 +9,8 @@
     <meta name="keywords" content="@yield('keyword')">
     <meta name="description" content="@yield('description')">
     <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="{{URL::asset('images/icon/favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{URL::asset('images/icon/favicon.ico')}}" type="image/x-icon">
     {{ Html::style('css/core.common.css') }}
     {{ Html::style('css/core.frontend.css') }}
     {{ Html::style('css/frontend.css') }}
@@ -37,9 +39,10 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
 </script>
-{{--@yield('scripts')--}}
 {{ Html::script('js/scripts.js') }}
+@yield('jv-scripts')
 <div class="callback d-lg-none d-md-none">
     <div class="phone_animation">
         <div class="phone_animation_circle"></div>
@@ -57,11 +60,10 @@
     </div>
 </div>
 <div class="mess_desk_bot d-none d-md-block" style="position: fixed;bottom:40px;right: 0px;">
-    <a href="tel:0909345117" style="display: block;width: 260px;height: 56px;background: url({{URL::to('images/nenhot.png')}}) no-repeat;text-align: center;padding-top: 10px;color:#fff;font-size: 20px;font-family: 'roboto-bold'">
+    <a href="tel:0909345117"
+       style="display: block;width: 260px;height: 56px;background: url({{URL::to('images/nenhot.png')}}) no-repeat;text-align: center;padding-top: 10px;color:#fff;font-size: 20px;font-family: 'roboto-bold'">
     </a>
 </div>
-
-
 </body>
 
 </Html>

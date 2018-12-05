@@ -6,7 +6,19 @@ Route::post('/getDistrict', 'FrontendController@getDistrict');
 
 
 Route::get('/danh-muc-bds', function () {
-    return view('frontend.categories.index');
+    return view('frontend.cacduan.index');
+});
+
+Route::get('/mua-ban-can-ho', function () {
+    return view('frontend.danhsachcanho.index');
+});
+
+Route::get('/can-ho-chi-tiet', function () {
+    return view('frontend.canhochitiet.index');
+});
+
+Route::get('/du-an-chi-tiet', function () {
+    return view('frontend.duanchitiet.index');
 });
 
 Route::get('/danh-muc/{path}', 'FrontendController@getDetailProduct');
