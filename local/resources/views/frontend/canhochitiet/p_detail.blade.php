@@ -60,37 +60,27 @@
                 <div id="content-info" class="tabcontent" style="line-height: 1.5">
                     {{--<p>{!! $data['product']->content !!}</p>--}}
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores consequatur deserunt
-                        dolorem eligendi facere laudantium magni minima molestias mollitia odit, optio, possimus quam
-                        quasi repellendus similique temporibus tenetur unde.
+                        {!! $data['product']->content !!}</p>
                     </p>
                 </div>
                 <div id="content-position" class="tabcontent" style="line-height: 1.5">
                     <p>
-                        2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores consequatur deserunt
-                        dolorem eligendi facere laudantium magni minima molestias mollitia odit, optio, possimus quam
-                        quasi repellendus similique temporibus tenetur unde.
+                        {!! $data['product']->p_position !!}
                     </p>
                 </div>
                 <div id="content-design" class="tabcontent" style="line-height: 1.5">
                     <p>
-                        3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores consequatur deserunt
-                        dolorem eligendi facere laudantium magni minima molestias mollitia odit, optio, possimus quam
-                        quasi repellendus similique temporibus tenetur unde.
+                        {!! $data['product']->p_design !!}
                     </p>
                 </div>
                 <div id="content-utility" class="tabcontent" style="line-height: 1.5">
                     <p>
-                        4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores consequatur deserunt
-                        dolorem eligendi facere laudantium magni minima molestias mollitia odit, optio, possimus quam
-                        quasi repellendus similique temporibus tenetur unde.
+                        {!! $data['product']->p_utility !!}
                     </p>
                 </div>
                 <div id="content-ground" class="tabcontent" style="line-height: 1.5">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores consequatur deserunt
-                        dolorem eligendi facere laudantium magni minima molestias mollitia odit, optio, possimus quam
-                        quasi repellendus similique temporibus tenetur unde.
+                        {!! $data['product']->p_ground !!}
                     </p>
                 </div>
 

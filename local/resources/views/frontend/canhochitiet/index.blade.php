@@ -20,11 +20,14 @@
                 @include('frontend.canhochitiet.h_2')
                 @include('frontend.canhochitiet.p_2')
                 {{--@include('frontend.canhochitiet.p_1')--}}
-                @include('frontend.canhochitiet.p_detail')
+
             </div>
 
             <div class="col-md-4">
                 @include('frontend.canhochitiet.cr_1')
+            </div>
+            <div class="col-md-12">
+                @include('frontend.canhochitiet.p_detail')
             </div>
         </div>
 

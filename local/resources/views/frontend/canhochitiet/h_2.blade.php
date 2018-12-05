@@ -42,7 +42,7 @@
         <div class="col-12 text-left">
 
             {{--<h6>{{ $data['product']->name}}</h6>--}}
-            <h6>TÊN CĂN HỘ</h6>
+            <h6>{{$data['product']->name}}</h6>
 
         </div>
 

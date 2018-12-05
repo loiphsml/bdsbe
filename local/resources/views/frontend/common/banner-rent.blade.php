@@ -1,5 +1,5 @@
 <div class="container-fluid" id="banner_rent"
-     style="background-image:url({{URL::asset('images/temps/sliders/slider_12.jpg')}});">
+     style="background-image:url({{URL::to($data['product']->image)}});">
     <div class="bg-cover">
         <div class="container">
             <div class="row">

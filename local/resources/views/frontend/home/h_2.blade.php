@@ -9,7 +9,7 @@
                     {{--@foreach($data['featuredProperties'] as $key=>$item)--}}
                     {{--<button class="tablinks" onclick="openCity(event, '{{$item->id}}')">{{$item->name}}</button>--}}
                     {{--@endforeach--}}
-                    {{--<button class="tablinks" onclick="openCity(event, 'quan2')">Quận 2</button>--}}
+                    <button class="tablinks" onclick="openCity(event, 'quan2')">Quận 2</button>
                     {{--<button class="tablinks" onclick="openCity(event, 'District3')">District 3</button>--}}
                     {{--<button class="tablinks" onclick="openCity(event, 'District4')">District 4</button>--}}
 
@@ -54,10 +54,10 @@
                                         {{--@endif--}}
                                     </div>
 
-                                    <div><a href="">
+                                    <div><a href="{{URL::to('danh-muc/'.$item->path)}}">
                                             <h5>CĂN HỘ SỐ 1</h5>
                                         </a></div>
-                                    <div><a href="">{{$item->name}}</a></div>
+                                    <div><a href="{{URL::to('danh-muc/'.$item->path)}}">{{$item->name}}</a></div>
                                     <div class="thongtin d-flex align-items-center">
                                         <i class="fas fa-bed"></i>
                                         <p>{{$item->area}}</p>

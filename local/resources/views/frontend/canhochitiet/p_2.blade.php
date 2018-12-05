@@ -72,28 +72,26 @@
             </div>
 
             <div class="col-12 text-center">
-                {{--@php--}}
-                    {{--$listImage=explode(';',$data['product']->sub_image);--}}
-                {{--@endphp--}}
-                {{--@foreach($listImage as $key=>$item)--}}
-                @for ($i = 0; $i < 8; $i++)
+                @php
+                    $listImage=explode(';',$data['product']->sub_image);
+                @endphp
+                @foreach($listImage as $key=>$item)
                     <div class="img-prdetails">
-                        {{--<a class="fancybox"--}}
-                           {{--data-fancybox="gallery-cus"--}}
-                           {{--href="{{URL::to($item)}}"><img src="{{URL::to($item)}}"--}}
-                                        {{--alt="">--}}
-                        {{--</a>--}}
-
-
                         <a class="fancybox"
                            data-fancybox="gallery-cus"
-                           href=""><img src="{{URL::asset('images/temps/sliders/slider_12.jpg')}}"
-                                                          alt="">
+                           href="{{URL::to($item)}}"><img src="{{URL::to($item)}}"
+                                        alt="">
                         </a>
 
+
+                        {{--<a class="fancybox"--}}
+                           {{--data-fancybox="gallery-cus"--}}
+                           {{--href=""><img src="{{URL::asset('images/temps/sliders/slider_12.jpg')}}"--}}
+                                                          {{--alt="">--}}
+                        {{--</a>--}}
+
                     </div>
-                @endfor
-                {{--@endforeach--}}
+                @endforeach
             </div>
         </div>
     </div>

@@ -31,14 +31,14 @@ class FrontendController extends Controller
 
     public function getSearch(Request $request)
     {
-        $data = $this->frontendRepository->getSearch($request);
+        $data = $this->frontendRepository->getSgetDetailProductearch($request);
         return view('frontend.search.index', compact('data'));
     }
 
     public function getDetailProduct($path)
     {
         $data = $this->frontendRepository->getDetailProduct($path);
-        return view('frontend.getDistrict.index', compact('data'));
+        return view('frontend.canhochitiet.index', compact('data'));
     }
     public function getPageContent($path)
     {
