@@ -705,7 +705,7 @@ This class is added to the container
   padding: 0 0.8em;
   color: #0880c1;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 #h_contact .lh-red {
