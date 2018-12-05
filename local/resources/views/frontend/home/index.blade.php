@@ -24,7 +24,7 @@
     {{--@include('frontend.home.h_product')--}}
     @include('frontend.home.h_1')
     @include('frontend.home.h_2')
-    @include('frontend.home.h_3')
+    {{--@include('frontend.home.h_3')--}}
     @include('frontend.common.map')
     {{--@include('frontend.home.h_contact')--}}
 @stop

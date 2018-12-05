@@ -9,7 +9,7 @@
                     {{--@foreach($data['featuredProperties'] as $key=>$item)--}}
                     {{--<button class="tablinks" onclick="openCity(event, '{{$item->id}}')">{{$item->name}}</button>--}}
                     {{--@endforeach--}}
-                    <button class="tablinks" onclick="openCity(event, 'quan2')">Quận 2</button>
+                    {{--<button class="tablinks" onclick="openCity(event, 'quan2')">Quận 2</button>--}}
                     {{--<button class="tablinks" onclick="openCity(event, 'District3')">District 3</button>--}}
                     {{--<button class="tablinks" onclick="openCity(event, 'District4')">District 4</button>--}}
 
@@ -17,7 +17,7 @@
                         <div class="row mt-3">
                             {{--@if(count($item->products)!=0)--}}
                             {{--@foreach($item->products as $key2=>$item2)--}}
-                            @for ($i = 0; $i < 8; $i++)
+                            @foreach($data['products'] as $key=>$item)
 
                                 <div class="col-md-3 col-6 text-left proj-items">
                                     <!--Carousel-->
@@ -57,22 +57,20 @@
                                     <div><a href="">
                                             <h5>CĂN HỘ SỐ 1</h5>
                                         </a></div>
-                                    <div><a href="">Sophisticated 3
-                                            bedroom
-                                            apartment in Masteri Thao Dien</a></div>
+                                    <div><a href="">{{$item->name}}</a></div>
                                     <div class="thongtin d-flex align-items-center">
                                         <i class="fas fa-bed"></i>
-                                        <p>Room</p>
+                                        <p>{{$item->area}}</p>
                                         <i class="fas fa-shower"></i>
-                                        <p>WC</p>
-                                        <i class="fas fa-map-marked-alt"></i>
-                                        <p>QUẬN 2</p>
+                                        <p> @if($item->price!==0){{$item->price}}{{$item->unit->name}}@else Liên Hệ @endif</p>
+                                        {{--<i class="fas fa-map-marked-alt"></i>--}}
+                                        {{--<p>QUẬN 2</p>--}}
                                     </div>
                                     <!--Carousel-->
                                 </div>
                                 {{--@endforeach--}}
                                 {{--@endif--}}
-                            @endfor
+                            @endforeach
 
 
                         </div>
