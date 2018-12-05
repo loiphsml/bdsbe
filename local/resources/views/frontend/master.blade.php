@@ -9,6 +9,7 @@
     <meta name="keywords" content="@yield('keyword')">
     <meta name="description" content="@yield('description')">
     <meta name="viewport" content="width=device-width">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,700'>
     <link rel="shortcut icon" href="{{URL::asset('images/icon/favicon.ico')}}" type="image/x-icon">
     <link rel="icon" href="{{URL::asset('images/icon/favicon.ico')}}" type="image/x-icon">
     {{ Html::style('css/core.common.css') }}
