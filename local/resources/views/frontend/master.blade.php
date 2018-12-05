@@ -15,6 +15,9 @@
     <meta property="og:description" content=""/>
     <meta property="og:locale" content="vi_VN"/>
     <meta property="og:url" content="{{url()->current()}}"/>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,700'>
+    <link rel="shortcut icon" href="{{URL::asset('images/icon/favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{URL::asset('images/icon/favicon.ico')}}" type="image/x-icon">
     {{ Html::style('css/core.common.css') }}
     {{ Html::style('css/core.frontend.css') }}
     {{ Html::style('css/frontend.css') }}
@@ -43,9 +46,10 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
 </script>
-{{--@yield('scripts')--}}
 {{ Html::script('js/scripts.js') }}
+@yield('jv-scripts')
 <div class="callback d-lg-none d-md-none">
     <div class="phone_animation">
         <div class="phone_animation_circle"></div>
@@ -67,8 +71,6 @@
        style="display: block;width: 260px;height: 56px;background: url({{URL::to('images/nenhot.png')}}) no-repeat;text-align: center;padding-top: 10px;color:#fff;font-size: 20px;font-family: 'roboto-bold'">
     </a>
 </div>
-
-
 </body>
 
 </Html>
