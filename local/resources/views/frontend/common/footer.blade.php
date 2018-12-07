@@ -83,7 +83,7 @@
                         HOTLINE: (+84) 902 806 679
                     </p>
                     <p>
-                        Copyright © 2018 www.saigonreal365.com
+                        Copyright © 2018 www.canhoxinh24h.com
                     </p>
                     <p>
                         Email: Tinanguyen1712@gmail.com
