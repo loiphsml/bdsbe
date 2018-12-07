@@ -31,7 +31,7 @@ class FrontendController extends Controller
 
     public function getSearch(Request $request)
     {
-        $data = $this->frontendRepository->getSgetDetailProductearch($request);
+        $data = $this->frontendRepository->getSearch($request);
         return view('frontend.search.index', compact('data'));
     }
 

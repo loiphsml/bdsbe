@@ -36,25 +36,44 @@ class FrontendRepository implements FrontendRepositoryInterface
 
     public function getDataSearch()
     {
+        $category = new CategoryItem();
         $cities = Location::where('level', 0)->orderBy('order')->get();
         $dd_locations_city = array_prepend(array_pluck($cities, 'name', 'id'), '--Chọn Khu Vực--', '-1');
         $data['dd_locations_city'] = $dd_locations_city;
+        $featuredProject = $category->getAllCategoryByType(CATEGORY_PRODUCT);
+        $data['featuredProject'] = $featuredProject;
         return $data;
     }
 
     public function getSearch(Request $request)
     {
         $data = [];
-        $name = $request->input('name');
+        $category = new CategoryItem();
+        $projectId = $request->input('select-project');
+        $searchText = $request->input('input-search-text');
         $district = $request->input('district');
         $city = $request->input('city');
         $price = $request->input('price');
-        $areaFrom = $request->input('area-from');
-        $areaTo = $request->input('area-to');
+        $searchTextMenu = $request->input('input-search-text-menu');
+//        $areaFrom = $request->input('area-from');
+//        $areaTo = $request->input('area-to');
         $products = Product::query();
-        if (!IsNullOrEmptyString($name)) {
-            $name = preg_replace('/\s+/', ' ', $name);
-            $products->where('name', 'like', '%' . $name . '%');
+        if (!is_null($projectId)) {
+            if ($projectId != -1) {
+                $products=$category->getAllProductByCategoryId($projectId);
+            } else {
+                if (!is_null($searchText)) {
+                    $products->where('name', 'like', '%' . $searchText . '%');
+                }
+            }
+        } else {
+            if (!is_null($searchTextMenu)) {
+                $products->where('name', 'like', '%' . $searchTextMenu . '%');
+            }
+        }
+        if (!IsNullOrEmptyString($searchText)) {
+            $searchText = preg_replace('/\s+/', ' ', $searchText);
+            $products->where('name', 'like', '%' . $searchText . '%');
         }
         if (!IsNullOrEmptyString($city)) {
             if ($city !== '-1')
@@ -68,12 +87,12 @@ class FrontendRepository implements FrontendRepositoryInterface
                 $products->where('location_id', $district);
             }
         }
-        if (!IsNullOrEmptyString($areaFrom)) {
-            $products->where('area', '>=', $areaFrom);
-        }
-        if (!IsNullOrEmptyString($areaTo)) {
-            $products->where('area', '<=', $areaTo);
-        }
+//        if (!IsNullOrEmptyString($areaFrom)) {
+//            $products->where('area', '>=', $areaFrom);
+//        }
+//        if (!IsNullOrEmptyString($areaTo)) {
+//            $products->where('area', '<=', $areaTo);
+//        }
 
 
         $products = $products->get();

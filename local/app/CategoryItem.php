@@ -30,4 +30,7 @@ class CategoryItem extends Model
         }
 
     }
+    public function getAllProductByCategoryId($id){
+        return $this->where('id',$id)->products();
+    }
 }

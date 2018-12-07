@@ -9,9 +9,6 @@ Route::get('/danh-muc-bds', function () {
     return view('frontend.cacduan.index');
 });
 
-//Route::get('/mua-ban-can-ho', function () {
-//    return view('frontend.danhsachcanho.index');
-//});
 Route::get('/mua-ban-can-ho', 'FrontendController@getAllDuAnByType')->defaults('type','muabancanho');
 Route::get('/mua-ban-dat-nen', 'FrontendController@getAllDuAnByType')->defaults('type','muabandatnen');
 
