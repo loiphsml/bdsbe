@@ -1,3 +1,7 @@
+<style>
+
+
+</style>
 <div id="menu" class="container-fluid d-none d-md-block shadow-sm">
         <div id="menu-top">
             <div class="row">
@@ -16,8 +20,13 @@
                                            {{--href="{{URL::to($item->link())}}">@lang($item->title)</a></li>--}}
                                 {{--@endforeach--}}
                                 <li><a class="{{ request()->is('/') ? 'active' : '/' }}" href="{{URL::asset('/')}}">Trang Chủ</a></li>
-                                <li><a class="{{ request()->is('mua-ban-dat-nen*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-dat-nen')}}">Mua Bán Đất Nền</a></li>
-                                <li><a class="{{ request()->is('mua-ban-can-ho*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-can-ho')}}">Mua Bán Căn Hộ</a></li>
+                                <li class="dropdown-overlay"><a class="{{ request()->is('mua-ban-dat-nen*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-dat-nen')}}">Danh sách căn hộ</a>
+                                    <ul class="dropdown-content">
+                                        <li><a href="">MUA BÁN CĂN HỘ</a></li>
+                                        <li><a href="">MUA BÁN ĐẤT NỀN</a></li>
+                                    </ul>
+                                </li>
+                                {{--<li><a class="{{ request()->is('mua-ban-can-ho*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-can-ho')}}">Mua Bán Căn Hộ</a></li>--}}
                                 <li><a class="{{ request()->is('tuyen-dung*') ? 'active' : '/' }}" href="{{URL::asset('trang/ky-gui')}}">Ký Gởi Dự Án</a></li>
                                 <li><a class="{{ request()->is('tuyen-dung*') ? 'active' : '/' }}" href="{{URL::asset('trang/gioi-thieu')}}">Giới Thiệu</a></li>
                                 <li><a class="{{ request()->is('tuyen-dung*') ? 'active' : '/' }}" href="{{URL::asset('trang/lien-he')}}">Liên Hệ</a></li>
