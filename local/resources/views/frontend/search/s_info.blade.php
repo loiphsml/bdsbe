@@ -4,7 +4,9 @@
             <div class="col-md-12 one-product p-0">
                 <div class="row">
                     <div class="col-md-5 ">
+                        <div style="width: 100%;overflow: hidden;">
                         <a href="{{URL::to('danh-muc/'.$item->path)}}">{{ Html::image($item->image,'',array('class'=>'img-one-product')) }}</a>
+                        </div>
                     </div>
                     <div class="col-md-7 info card">
                         <h3><a href="{{URL::to('danh-muc/'.$item->path)}}">{{$item->name}}</a></h3>
