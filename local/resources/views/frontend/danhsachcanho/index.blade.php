@@ -1,9 +1,9 @@
 @extends('frontend.master')
 @section('title')
-    SÀI GÒN REAL 365
+    CĂN HỘ XINH 24H
 @stop
 @section('description')
-    SÀI GÒN REAL 365
+    CĂN HỘ XINH 24H
 @stop
 @section('styles')
     {{ Html::style('css/themes/default/default.css') }}

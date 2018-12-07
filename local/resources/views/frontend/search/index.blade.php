@@ -1,9 +1,9 @@
 @extends('frontend.master')
 @section('title')
-    Nội Thất
+    CĂN HỘ XINH 24H
 @stop
 @section('description')
-    Nội Thất
+    CĂN HỘ XINH 24H
 @stop
 
 @section('container')
