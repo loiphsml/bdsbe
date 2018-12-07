@@ -32,7 +32,7 @@
                     <ul>
                         <li>
                             <p>
-                                <img src="{{URL::asset('images/logo/logo_footer.png')}}" alt="">
+                                <img src="{{URL::asset('images/logo/logo.png')}}" alt="">
                                 Với hơn 10 năm kinh nghiệm trong lĩnh vực định giá và đầu tư bất động sản, chúng tôi hi vọng
                                 mang lại những giá trị đầu tư cũng như tư vấn mới trong lĩnh vực bất động sản để quý khách an cư
                                 lập nghiệp</p>
@@ -77,7 +77,7 @@
             <div class="row border-white border-top">
 
                 <div class="col-12 text-center pt-4">
-                    <h5>CÔNG TY TNHH DỊCH VỤ <span>SAIGON REAL 365</span>
+                    <h5>CÔNG TY TNHH DỊCH VỤ <span>CĂN HỘ XINH 24H</span>
                     </h5>
                     <p>
                         HOTLINE: (+84) 902 806 679
