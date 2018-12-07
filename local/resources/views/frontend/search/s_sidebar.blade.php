@@ -20,19 +20,19 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="form-group">
-                <label>Diện Tích(m2)</label>
-                <div class="row">
-                    <div class="col-md-6">
-                        {!! Form::text('area-from',null, array('placeholder' => 'từ','class' => 'form-control')) !!}
-                    </div>
-                    <div class="col-md-6">
-                        {!! Form::text('area-to',null, array('placeholder' => 'đến','class' => 'form-control')) !!}
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{--<div class="col-md-12">--}}
+            {{--<div class="form-group">--}}
+                {{--<label>Diện Tích(m2)</label>--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col-md-6">--}}
+                        {{--{!! Form::text('area-from',null, array('placeholder' => 'từ','class' => 'form-control')) !!}--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-6">--}}
+                        {{--{!! Form::text('area-to',null, array('placeholder' => 'đến','class' => 'form-control')) !!}--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
         <div class="col-md-12">
             <div class="form-group">

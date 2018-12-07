@@ -198,4 +198,14 @@ $(document).ready(function () {
     $('#btn-search').click(function(){
         $('form#form-search').submit();
     });
+    $('input[name=input-search-text-menu]').on('keydown', function (e) {
+        var input_text = $(this).val();
+        if (e.which == 13) {
+            if (input_text == '')
+                e.preventDefault();
+            else {
+                $('form[name=search-home]').submit();
+            }
+        }
+    })
 });

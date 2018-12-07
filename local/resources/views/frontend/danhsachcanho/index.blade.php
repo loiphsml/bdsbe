@@ -9,7 +9,7 @@
     {{ Html::style('css/themes/default/default.css') }}
 @stop
 @section('slider')
-    @include('frontend.common.search-bar')
+    {{--@include('frontend.common.search-bar')--}}
     @include('frontend.common.mobile-bar')
 @stop
 @section('container')

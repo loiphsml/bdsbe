@@ -9,8 +9,10 @@
                         <div class=" pl-3 d-flex align-items-center">
                             {{ Html::image('images/logo/logo.png','',array('class'=>'img-logo')) }}
                             <div id="search_box">
+                                {!! Form::open(array('route' => 'search.start','method'=>'POST','name'=>'search-home','id'=>'form-search')) !!}
                                 <input name="input-search-text-menu" type="text" placeholder="Tìm kiếm dự án">
                                 <button type="submit"><i class="fas fa-search"></i></button>
+                                {!! Form::close() !!}
                             </div>
                         </div>
                         <div id="nav-content">
@@ -20,10 +22,10 @@
                                            {{--href="{{URL::to($item->link())}}">@lang($item->title)</a></li>--}}
                                 {{--@endforeach--}}
                                 <li><a class="{{ request()->is('/') ? 'active' : '/' }}" href="{{URL::asset('/')}}">Trang Chủ</a></li>
-                                <li class="dropdown-overlay"><a class="{{ request()->is('mua-ban-dat-nen*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-dat-nen')}}">Danh sách căn hộ</a>
+                                <li class="dropdown-overlay"><a  href="">Danh sách căn hộ</a>
                                     <ul class="dropdown-content">
-                                        <li><a href="">MUA BÁN CĂN HỘ</a></li>
-                                        <li><a href="">MUA BÁN ĐẤT NỀN</a></li>
+                                        <li><a class="{{ request()->is('mua-ban-can-ho*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-can-ho')}}">MUA BÁN CĂN HỘ</a></li>
+                                        <li><a class="{{ request()->is('mua-ban-dat-nen*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-dat-nen')}}">MUA BÁN ĐẤT NỀN</a></li>
                                     </ul>
                                 </li>
                                 {{--<li><a class="{{ request()->is('mua-ban-can-ho*') ? 'active' : '/' }}" href="{{URL::to('mua-ban-can-ho')}}">Mua Bán Căn Hộ</a></li>--}}
